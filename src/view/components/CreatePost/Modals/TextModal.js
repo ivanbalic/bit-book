@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import { postService } from '../../../../services/post-service/postService';
 class TextModal extends Component {
     constructor(props) {
         super(props);
@@ -7,6 +7,21 @@ class TextModal extends Component {
         this.state = {
             inputValue: ""
         }
+    }
+
+    createPostHandler = () => {
+
+        const payload = {
+            text: this.state.inputValue
+        }
+
+        postService.createPost(payload, "TextPosts")
+            .then(response => {
+                return response.json()
+            })
+            .catch((err) => {
+                console.log(err);
+            })
     }
 
     getInputValue = (event) => {
@@ -17,24 +32,22 @@ class TextModal extends Component {
         })
     }
 
-
     render() {
-
         return (
             <>
-                <div class="modal fade" id="textModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">New text post</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <div className="modal fade" id="textModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div className="modal-dialog" role="document">
+                        <div className="modal-content">
+                            <div className="modal-header">
+                                <h5 className="modal-title" id="exampleModalLabel">New text post</h5>
+                                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            <input type="text" class="form-control col-11 m-3" value={this.state.inputValue} onChange={this.getInputValue} placeholder="Post text" aria-label="Username" />
+                            <input type="text" className="form-control col-11 m-3" value={this.state.inputValue} onChange={this.getInputValue} placeholder="Post text" aria-label="Username" />
                             <p>alert</p>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-primary">Post text</button>
+                            <div className="modal-footer">
+                                <button onClick={this.createPostHandler} type="button" className="btn btn-primary">Post text</button>
                             </div>
                         </div>
                     </div>
