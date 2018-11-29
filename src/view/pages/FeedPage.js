@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { FeedItem } from '../components/FeedItem/FeedItem';
 import { postService } from '../../services/post-service/postService';
+import { CreatePost } from '../components/CreatePost/CreatePost';
 
 class FeedPage extends Component {
     constructor(props) {
@@ -30,13 +31,14 @@ class FeedPage extends Component {
                 <p>Loading...</p>
             );
         }
-        const feedList = this.state.posts.map((post) => {
+        const feedList = posts.map((post) => {
             const { id } = post;
             return <FeedItem key={id} post={post} />
         })
         return (
             <>
                 {feedList}
+                <CreatePost />
             </>
         );
     }

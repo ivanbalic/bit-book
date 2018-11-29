@@ -1,8 +1,9 @@
 import React from 'react';
 
-const PostText = ({ content }) => {
+const PostText = ({ post }) => {
+    const { text } = post;
     return (
-        <p>{content}</p>
+        <p>{text}</p>
     )
 }
 

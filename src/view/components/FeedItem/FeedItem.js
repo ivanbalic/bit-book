@@ -4,30 +4,34 @@ import { PostImage } from './FeedContent/PostImage';
 import { PostText } from './FeedContent/PostText';
 import { PostVideo } from './FeedContent/PostVideo';
 
-const feedContent = (type, content) => {
-    if (type === 'text') {
+const feedContent = (post) => {
+    console.log(post);
+
+    if (post.isImage()) {
         return (
-            <PostText content={content} />
+            <PostImage post={post} />
         );
-    } else if (type === 'video') {
+    } else if (post.isVideo()) {
         return (
-            <PostVideo content={content} />
+            <PostVideo post={post} />
         );
     }
     return (
-        <PostImage content={content} />
+        <PostText post={post} />
     );
 
 }
 
 
 const FeedItem = ({ post }) => {
-    const { commentsNum, type, content } = post;
+
+    const { commentsNum } = post;
+
 
     return (
         <div className="card mb-3">
             <div className='p-3'>
-                {feedContent(type, content)}
+                {feedContent(post)}
             </div>
             <div className="card-body">
                 <p className="card-text">

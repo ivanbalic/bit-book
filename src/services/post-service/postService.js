@@ -1,10 +1,12 @@
 import { BASE_ENDPOINT } from '../../shared/constants';
-import Post from '../../models/Post';
+import VideoPost from '../../models/VideoPost';
+import ImagePost from '../../models/ImagePost';
+import TextPost from '../../models/TextPost';
 
 class PostService {
 
     fetchPosts() {
-        const POSTS_ENDPOINT = `${BASE_ENDPOINT}/api/posts`;
+        const POSTS_ENDPOINT = `${BASE_ENDPOINT}/posts`;
 
         return fetch(POSTS_ENDPOINT, {
             method: "GET",
@@ -15,26 +17,41 @@ class PostService {
             }
         })
             .then((response) => {
-
                 return response.json();
             })
             .then((result) => {
 
                 const mappedPosts = result.map((post) => {
-                    if (post.type === 'text') {
-                        const { commentsNum, dateCreated, id, type, userDisplayName, userId, text } = post;
-                        return new Post(commentsNum, dateCreated, id, type, userDisplayName, userId, text);
-                    } else if (post.type === 'video') {
-                        const { commentsNum, dateCreated, id, type, userDisplayName, userId, videoUrl } = post;
 
-                        return new Post(commentsNum, dateCreated, id, type, userDisplayName, userId, videoUrl);
+                    switch (post.type) {
+                        case "image":
+                            return new ImagePost(post)
+                        case "video":
+                            return new VideoPost(post);
+                        case "text":
+                            return new TextPost(post)
+                        default:
+                            throw new Error("Invalid post type")
                     }
-                    const { commentsNum, dateCreated, id, type, userDisplayName, userId, imageUrl } = post;
-                    return new Post(commentsNum, dateCreated, id, type, userDisplayName, userId, imageUrl);
-                })
+                });
                 mappedPosts.length = 5;
                 return mappedPosts;
             });
+    }
+
+    createPost(data, queryParam) {
+        const POSTS_ENDPOINT = `${BASE_ENDPOINT}/${queryParam}`;
+
+        return fetch(POSTS_ENDPOINT, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json; charset=utf-8",
+                'Key': 'bitbookdev',
+                'SessionId': '2990B489-DB94-4AC1-ACDE-CDC9CC3EAEAE',
+            },
+            body: JSON.stringify(data),
+        })
+
     }
 
 }

@@ -1,12 +1,19 @@
 class Post {
-    constructor(commentsNum, dateCreated, id, type, userDisplayName, userId, content) {
+    constructor({ commentsNum, dateCreated, id, type, userDisplayName, userId }) {
         this.commentsNum = commentsNum;
         this.dateCreated = dateCreated;
         this.id = id;
         this.type = type;
         this.userDisplayName = userDisplayName;
         this.userId = userId;
-        this.content = content;
+    }
+
+    isVideo() {
+        return this.type === "video"
+    }
+
+    isImage() {
+        return this.type === "image"
     }
 
     getCapitalType() {
