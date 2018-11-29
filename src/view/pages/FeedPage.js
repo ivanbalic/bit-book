@@ -42,6 +42,4 @@ class FeedPage extends Component {
     }
 }
 
-export {
-    FeedPage
-}
+export default FeedPage;

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { PostImage } from './FeedContent/PostImage';
 import { PostText } from './FeedContent/PostText';
 import { PostVideo } from './FeedContent/PostVideo';
@@ -29,7 +30,12 @@ const FeedItem = ({ post }) => {
                 {feedContent(type, content)}
             </div>
             <div className="card-body">
-                <p className="card-text"><small className="text-muted">{post.getCapitalType()} post</small><small className="text-muted float-right">{commentsNum} Comments</small></p>
+                <p className="card-text">
+                    <small className="text-muted">{post.getCapitalType()} post</small>
+                    <Link to='/post-details'>
+                        <small className="text-muted float-right">{commentsNum} Comments</small>
+                    </Link>
+                </p>
             </div>
         </div>
     );
