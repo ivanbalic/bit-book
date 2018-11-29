@@ -6,6 +6,7 @@ const Main = (props) => {
     return (
         <main className='container'>
             <FeedPage />
+
         </main>
     );
 }
