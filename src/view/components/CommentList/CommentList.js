@@ -19,15 +19,14 @@ class CommentList extends Component {
                     comments
                 })
             })
-
     }
 
     render() {
         if (!this.state.comments) {
-            return <h1>Loading...</h1>
+            return <h1 className='text-center mt-4'>Loading...</h1>
         }
         if (!this.state.comments.length) {
-            return <h1>No comments!</h1>
+            return <h1 className='text-center mt-4'>No comments!</h1>
         }
 
         console.log(this.state.comments);
@@ -36,7 +35,7 @@ class CommentList extends Component {
             return <CommentItem comment={comment} />
         })
         return (
-            <div className="my-4">
+            <div className="my-4 px-4">
                 {comments}
             </div>
         );

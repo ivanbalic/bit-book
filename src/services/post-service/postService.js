@@ -41,7 +41,7 @@ class PostService {
                                 throw new Error("Invalid post type");
                         }
                     });
-                mappedPosts.length = 5;
+                // mappedPosts.length = 30;
                 return mappedPosts;
             });
     }

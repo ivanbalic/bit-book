@@ -10,7 +10,7 @@ const FeedItem = ({ post }) => {
 
 
     return (
-        <div className="card mb-3">
+        <div className="card my-4">
             <div className='p-3'>
                 {createFeedContent(post)}
             </div>

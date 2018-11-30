@@ -8,7 +8,7 @@ class CommentService {
 
     fetchComments(postId) {
 
-        const COMMENTS_ENDPOINT = `${BASE_ENDPOINT}/comments?postId=3351`;
+        const COMMENTS_ENDPOINT = `${BASE_ENDPOINT}/comments?postId=${postId}`;
 
         return fetch(COMMENTS_ENDPOINT, {
             method: "GET",

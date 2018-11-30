@@ -11,10 +11,10 @@ class CommentInput extends Component {
 
     render() {
         return (
-            <>
-                <input type="text" placeholder='Add your comment...' />
+            <div className='mt-4 px-4 input-group-prepend'>
+                <input className='form-control' type="text" placeholder='Add your comment...' />
                 <input type="button" value='SEND' />
-            </>
+            </div>
         );
     }
 }

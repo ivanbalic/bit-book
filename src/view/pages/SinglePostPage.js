@@ -41,8 +41,9 @@ class SinglePostPage extends Component {
 
         return (
             <>
-                <p>POST CONTENT GOES HERE</p>
-                {createFeedContent(post)}
+                <div className='mt-4 p-4 border'>
+                    {createFeedContent(post)}
+                </div>
                 <CommentInput />
                 <CommentList postId={post.id} />
                 {comments ? commentList : noCommentMessage}
