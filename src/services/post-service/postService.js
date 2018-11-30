@@ -21,19 +21,26 @@ class PostService {
             })
             .then((result) => {
 
-                const mappedPosts = result.map((post) => {
+                const mappedPosts = result
+                    .filter((post) => {
+                        if (post.videoUrl) {
+                            return post.videoUrl.includes('https://www.youtube.com/embed');
+                        }
+                        return true;
+                    })
+                    .map((post) => {
 
-                    switch (post.type) {
-                        case "image":
-                            return new ImagePost(post)
-                        case "video":
-                            return new VideoPost(post);
-                        case "text":
-                            return new TextPost(post)
-                        default:
-                            throw new Error("Invalid post type")
-                    }
-                });
+                        switch (post.type) {
+                            case "image":
+                                return new ImagePost(post)
+                            case "video":
+                                return new VideoPost(post);
+                            case "text":
+                                return new TextPost(post)
+                            default:
+                                throw new Error("Invalid post type")
+                        }
+                    });
                 mappedPosts.length = 5;
                 return mappedPosts;
             });
