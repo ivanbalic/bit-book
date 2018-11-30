@@ -2,11 +2,13 @@ import { BASE_ENDPOINT } from '../../shared/constants';
 import VideoPost from '../../models/VideoPost';
 import ImagePost from '../../models/ImagePost';
 import TextPost from '../../models/TextPost';
+import Comment from '../../models/Comment';
 
 class CommentService {
 
     fetchComments(postId) {
-        const COMMENTS_ENDPOINT = `${BASE_ENDPOINT}/comments?postId=${postId}`;
+
+        const COMMENTS_ENDPOINT = `${BASE_ENDPOINT}/comments?postId=3351`;
 
         return fetch(COMMENTS_ENDPOINT, {
             method: "GET",
@@ -17,11 +19,12 @@ class CommentService {
             }
         })
             .then((response) => {
+
                 return response.json();
             })
-            .then((result) => {
+            .then((comments) => {
 
-                const mappedComments = result.map((comment) => {
+                const mappedComments = comments.map((comment) => {
                     return new Comment(comment.id, comment.body, comment.postId, comment.authorName, comment.authorId);
                 });
                 return mappedComments;
@@ -58,9 +61,11 @@ class CommentService {
             }
         })
             .then((response) => {
+
                 return response.json();
             })
             .then((post) => {
+
                 switch (post.type) {
                     case "image":
                         return new ImagePost(post)

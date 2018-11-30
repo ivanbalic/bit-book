@@ -44,7 +44,7 @@ class SinglePostPage extends Component {
                 <p>POST CONTENT GOES HERE</p>
                 {createFeedContent(post)}
                 <CommentInput />
-                <CommentList />
+                <CommentList postId={post.id} />
                 {comments ? commentList : noCommentMessage}
             </>
         );
