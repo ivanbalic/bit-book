@@ -1,21 +1,22 @@
 import React, { Component } from 'react';
 import { postService } from '../../../../services/post-service/postService';
-
+import './VideoModal.css';
 class VideoModal extends Component {
     constructor(props) {
         super(props)
 
         this.state = {
-            inputValue: ""
+            inputValue: "",
+            error: true,
+            buttonClass: "btn btn-primary disabled"
+
         }
     }
 
     createPostHandler = () => {
-
         const payload = {
             videoUrl: this.state.inputValue
         }
-
         postService.createPost(payload, "VideoPosts")
             .then(response => {
                 return response.json();
@@ -23,14 +24,33 @@ class VideoModal extends Component {
             .catch((err) => {
                 console.log(err);
             })
+
+        this.setState({ inputValue: "" })
     }
 
     getInputValue = (event) => {
+        let stateObj;
 
-        console.log(event.target.value);
-        this.setState({
-            inputValue: event.target.value
-        })
+        if (event.target.value.startsWith("https://www.youtube.com") || event.target.value.startsWith("http://www.youtube.com")) {
+            console.log(event.target.value);
+            const embedVideo = event.target.value.split("watch?v=").join("embed/");
+
+            console.log(embedVideo);
+            stateObj = {
+                inputValue: embedVideo,
+                error: true,
+                buttonClass: "btn btn-primary",
+            }
+        } else {
+            stateObj = {
+                inputValue: event.target.value,
+                error: false,
+                buttonClass: "btn btn-primary disabled",
+            }
+
+
+        }
+        this.setState(stateObj)
     }
 
     render() {
@@ -45,9 +65,10 @@ class VideoModal extends Component {
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            <input type="text" className="form-control col-11 m-3" value={this.state.inputValue} onChange={this.getInputValue} placeholder="Post video" aria-label="Username" />
+                            <input type="text" className={this.state.error ? "form-control col-11 m-3" : "form-control col-11 m-3 alertInput"} value={this.state.inputValue} onChange={this.getInputValue} placeholder="Post video" aria-label="Username" />
+                            <p className="alertParagraph">{this.state.error ? "" : "Error input"}</p>
                             <div className="modal-footer">
-                                <button onClick={this.createPostHandler} type="button" className="btn btn-primary">Post video</button>
+                                <button onClick={this.createPostHandler} type="button" className={this.state.buttonClass} data-toggle={this.state.error ? "modal" : ""} data-target="#videoModal">Post video</button>
                             </div>
                         </div>
                     </div>
