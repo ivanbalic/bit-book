@@ -1,12 +1,12 @@
 
 class User {
-    constructor(image, fullName, description, postNumber, commentNumber) {
+    constructor(id, name, aboutShort, lastPostDate, image = 'https://via.placeholder.com/150') {
+        this.id = id;
+        this.name = name;
+        this.aboutShort = aboutShort;
+        this.lastPostDate = lastPostDate;
         this.image = image;
-        this.fullName = fullName;
-        this.description = description;
-        this.postNumber = postNumber;
-        this.commentNumber = commentNumber;
     }
 }
 
-export { User }
+export default User;
