@@ -35,9 +35,9 @@ class CommentList extends Component {
             return <CommentItem comment={comment} />
         })
         return (
-            <div className="my-4 px-4">
+            <ul class="list-unstyled my-4 px-4">
                 {comments}
-            </div>
+            </ul>
         );
     }
 }
