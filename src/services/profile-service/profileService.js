@@ -1,4 +1,4 @@
-import { Profile } from '../../models/Profile';
+import { User } from '../../models/User';
 
 const fetchProfile = () => {
     const PROFILE_BASE = "http://bitbookapi.azurewebsites.net/api/profile";
@@ -14,7 +14,8 @@ const fetchProfile = () => {
             return response.json()
         })
         .then(profile => {
-            return new Profile(profile.avatarUrl, profile.name, profile.about, profile.postsCount, profile.commentsCount)
+            const { avatarUrl, name, about, postsCount, commentsCount } = profile;
+            return new User(avatarUrl, name, about, postsCount, commentsCount)
         })
 }
 
