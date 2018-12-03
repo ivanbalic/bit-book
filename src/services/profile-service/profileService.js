@@ -1,6 +1,6 @@
 import Profile from '../../models/Profile';
 
-class ProfileSerice {
+class ProfileService {
 
     fetchProfile() {
         const PROFILE_BASE = "http://bitbookapi.azurewebsites.net/api/profile";
@@ -21,4 +21,4 @@ class ProfileSerice {
             })
     }
 }
-export const profileService = new ProfileSerice();
+export const profileService = new ProfileService();

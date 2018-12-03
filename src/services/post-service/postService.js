@@ -24,7 +24,7 @@ class PostService {
                 const mappedPosts = result
                     .filter((post) => {
                         if (post.videoUrl) {
-                            return post.videoUrl.includes('https://www.youtube.com/embed');
+                            return post.videoUrl.includes('https://www.youtube.com/embed/');
                         }
                         return true;
                     })
@@ -32,16 +32,16 @@ class PostService {
 
                         switch (post.type) {
                             case "image":
-                                return new ImagePost(post)
+                                return new ImagePost(post);
                             case "video":
                                 return new VideoPost(post);
                             case "text":
-                                return new TextPost(post)
+                                return new TextPost(post);
                             default:
-                                throw new Error("Invalid post type")
+                                throw new Error("Invalid post type");
                         }
                     });
-                mappedPosts.length = 5;
+                // mappedPosts.length = 30;
                 return mappedPosts;
             });
     }

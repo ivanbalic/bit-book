@@ -1,43 +1,24 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { PostImage } from './FeedContent/PostImage';
-import { PostText } from './FeedContent/PostText';
-import { PostVideo } from './FeedContent/PostVideo';
 
-const feedContent = (post) => {
-    console.log(post);
-
-    if (post.isImage()) {
-        return (
-            <PostImage post={post} />
-        );
-    } else if (post.isVideo()) {
-        return (
-            <PostVideo post={post} />
-        );
-    }
-    return (
-        <PostText post={post} />
-    );
-
-}
-
+import { createFeedContent } from '../../../shared/createFeedContent';
 
 const FeedItem = ({ post }) => {
+    console.log(post);
 
-    const { commentsNum } = post;
+    const { commentsNum, id, type } = post;
 
 
     return (
-        <div className="card mb-3">
+        <div className="card my-4">
             <div className='p-3'>
-                {feedContent(post)}
+                {createFeedContent(post)}
             </div>
             <div className="card-body">
                 <p className="card-text">
                     <small className="text-muted">{post.getCapitalType()} post</small>
-                    <Link to='/post-details'>
-                        <small className="text-muted float-right">{commentsNum} Comments</small>
+                    <Link to={`/post-details/${type}/${id}`}>
+                        <small className="text-muted float-right">{commentsNum} Comment/s</small>
                     </Link>
                 </p>
             </div>

@@ -8,5 +8,4 @@ class User {
         this.image = image;
     }
 }
-
 export default User;
