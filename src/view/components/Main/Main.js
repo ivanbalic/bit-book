@@ -1,7 +1,7 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import FeedPage from '../../pages/FeedPage';
-import PeoplePage from '../../pages/PeoplePage';
+import PeoplePage from '../../pages/PeoplePage/PeoplePage';
 import ProfilePage from '../../pages/ProfilePage/ProfilePage';
 import SinglePostPage from '../../pages/SinglePostPage';
 
