@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { profileService } from '../../../services/profile-service/profileService';
+import { userService } from '../../../services/user-service/user-service.js';
 
 
 import './ProfilePage.css'
@@ -13,7 +13,7 @@ class ProfilePage extends Component {
     }
 
     fetchProfile = () => {
-        profileService.fetchProfile()
+        userService.fetchProfile()
             .then(myProfile => {
                 this.setState({ myProfile })
                 console.log(this.state.myProfile.image);
@@ -32,7 +32,7 @@ class ProfilePage extends Component {
                 <div class="jumbotron">
                     <img src={this.state.myProfile.image} alt="profileImage" className="profileImage rounded-circle" />
 
-                    <h1 class="display-4 text-center">{this.state.myProfile.fullName}</h1>
+                    <h1 class="display-4 text-center">{this.state.myProfile.name}</h1>
                     <hr className="my-4" />
                     <p className="text-center">{this.state.myProfile.description}</p>
                     <p className="lead text-center">

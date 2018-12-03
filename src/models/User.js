@@ -1,11 +1,13 @@
 
 class User {
-    constructor(id, name, aboutShort, lastPostDate, image = 'https://via.placeholder.com/150') {
-        this.id = id;
-        this.name = name;
-        this.aboutShort = aboutShort;
-        this.lastPostDate = lastPostDate;
+    constructor(image = 'https://via.placeholder.com/150', name, description, postNumber, commentNumber, lastPostDate, id) {
         this.image = image;
+        this.name = name;
+        this.description = description;
+        this.postNumber = postNumber;
+        this.commentNumber = commentNumber;
+        this.lastPostDate = lastPostDate;
+        this.id = id;
     }
 
     getPostTime() {
