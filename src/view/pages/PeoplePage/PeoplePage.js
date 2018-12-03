@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { userService } from '../../../services/user-service/user-service';
 
 import { PeopleList } from './PeopleList';
+import { SearchBar } from './SearchBar';
+
 import './PeoplePage.css'
 
 
@@ -10,6 +12,7 @@ class PeoplePage extends Component {
         super(props);
         this.state = {
             users: "",
+            searchInput: ""
         }
     }
 
@@ -22,20 +25,30 @@ class PeoplePage extends Component {
     }
 
 
+    searchEventHandler = (inputValue) => {
+        this.setState({ searchInput: inputValue })
+    }
+
+
     componentDidMount() {
         this.fetchUser();
     }
 
 
     render() {
+
         if (!this.state.users) {
             return <h1>loading</h1>
         }
+        const filteredUsers = this.state.users.filter(user => {
+            return user.name.toLowerCase().includes(this.state.searchInput.toLowerCase());
+        })
 
         return (
+
             <>
-                <input class="form-control mt-5 w-100" type="text" placeholder="Search" aria-label="Search"></input>
-                <PeopleList users={this.state.users} />
+                <SearchBar onSearchChange={this.searchEventHandler} />
+                <PeopleList users={filteredUsers} />
             </>
         );
     }

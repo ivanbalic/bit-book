@@ -1,5 +1,8 @@
 .userContainer{
     margin-top: 2em;
+    background: #f8f9fa;
+    vertical-align: top !important;
+    padding: 1em;
 }
 
 .peopleImage{
