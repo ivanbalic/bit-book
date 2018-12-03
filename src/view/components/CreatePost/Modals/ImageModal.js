@@ -21,7 +21,7 @@ class ImageModal extends Component {
 
         postService.createPost(payload, "ImagePosts")
             .then(response => {
-                return response.json()
+                this.props.loadPosts();
             })
             .catch((err) => {
                 console.log(err);

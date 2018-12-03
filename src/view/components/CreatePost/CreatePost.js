@@ -21,9 +21,9 @@ class CreatePost extends Component {
     render() {
         return (
             <>
-                <ImageModal />
-                <TextModal />
-                <VideoModal />
+                <ImageModal loadPosts={this.props.loadPosts} />
+                <TextModal loadPosts={this.props.loadPosts} />
+                <VideoModal loadPosts={this.props.loadPosts} />
                 <div className="buttonContainer">
                     <ul className={this.state.active ? "list-group" : "list-group displayNone"}>
                         <li className="list-group-item buttonList border-0">

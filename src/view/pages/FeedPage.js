@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+
+import { FeedList } from '../components/FeedList/FeedList';
 import { FeedItem } from '../components/FeedItem/FeedItem';
 import { postService } from '../../services/post-service/postService';
 import { CreatePost } from '../components/CreatePost/CreatePost';
@@ -11,8 +13,7 @@ class FeedPage extends Component {
         }
     }
 
-    componentDidMount() {
-
+    loadPosts = () => {
         const postsPromise = postService.fetchPosts();
 
         postsPromise.then((myPosts) => {
@@ -24,21 +25,25 @@ class FeedPage extends Component {
         });
     }
 
+    componentDidMount() {
+
+        this.loadPosts();
+    }
+
     render() {
+
         const { posts } = this.state;
+
         if (!posts) {
             return (
                 <p>Loading...</p>
             );
         }
-        const feedList = posts.map((post) => {
-            const { id } = post;
-            return <FeedItem key={id} post={post} />
-        })
+
         return (
             <>
-                {feedList}
-                <CreatePost />
+                <FeedList posts={posts} />
+                <CreatePost loadPosts={this.loadPosts} />
             </>
         );
     }

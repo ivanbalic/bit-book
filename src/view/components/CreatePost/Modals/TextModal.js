@@ -24,7 +24,7 @@ class TextModal extends Component {
 
         postService.createPost(payload, "TextPosts")
             .then(response => {
-                return response.json()
+                this.props.loadPosts();
             })
             .catch((err) => {
                 console.log(err);
@@ -39,7 +39,6 @@ class TextModal extends Component {
     getInputValue = (event) => {
         let stateObj;
         if (!event.target.value.includes("http") && event.target.value.length >= 3 && !event.target.value.includes("<") && !event.target.value.includes("www")) {
-            console.log(event.target.value);
             stateObj = {
                 inputValue: event.target.value,
                 error: true,
