@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import { CommentInput } from '../CommentInput/CommentInput';
 import { CommentItem } from '../CommentItem/CommentItem';
 import { commentService } from '../../../services/comment-service/commentService';
 
@@ -7,12 +8,13 @@ import { commentService } from '../../../services/comment-service/commentService
 class CommentList extends Component {
     constructor(props) {
         super(props);
+
         this.state = {
             comments: null,
         }
     }
 
-    componentDidMount() {
+    loadComments = () => {
         commentService.fetchComments(this.props.postId)
             .then((comments) => {
                 this.setState({
@@ -21,25 +23,41 @@ class CommentList extends Component {
             })
     }
 
+    // onSuccess = () => {
+    //     this.loadComments();
+    // }
+
+    componentDidMount() {
+        this.loadComments();
+    }
+
     render() {
-        if (!this.state.comments) {
+
+        const { comments } = this.state;
+
+        if (!comments) {
             return <h1 className='text-center mt-4'>Loading...</h1>
         }
-        if (!this.state.comments.length) {
+        if (!comments.length) {
             return <h1 className='text-center mt-4'>No comments!</h1>
         }
 
-        console.log(this.state.comments);
+        console.log(comments);
 
-        const comments = this.state.comments.map((comment) => {
-            return <CommentItem comment={comment} />
+        const commentItemList = comments.map((comment) => {
+            return <CommentItem key={comment.id} comment={comment} />
         })
         return (
-            <ul class="list-unstyled my-4 px-4">
-                {comments}
-            </ul>
+            <>
+                <CommentInput postId={this.props.postId} loadComments={this.loadComments} />
+                <ul className="list-unstyled my-4 px-4" >
+                    {commentItemList.reverse()}
+                </ul>
+            </>
         );
     }
+
+
 }
 
 export default CommentList;
