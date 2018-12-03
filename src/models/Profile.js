@@ -1,5 +1,5 @@
 
-class User {
+class Profile {
     constructor(image, fullName, description, postNumber, commentNumber) {
         this.image = image;
         this.fullName = fullName;
@@ -9,4 +9,4 @@ class User {
     }
 }
 
-export { User }
+export default Profile
