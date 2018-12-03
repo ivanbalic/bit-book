@@ -1,6 +1,6 @@
 
 class Profile {
-    constructor(image, fullName, description, postNumber, commentNumber) {
+    constructor(image = 'https://via.placeholder.com/150', fullName, description, postNumber, commentNumber) {
         this.image = image;
         this.fullName = fullName;
         this.description = description;
@@ -9,4 +9,5 @@ class Profile {
     }
 }
 
-export default Profile
+
+export default Profile;

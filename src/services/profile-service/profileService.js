@@ -20,8 +20,5 @@ class ProfileService {
                 return new Profile(avatarUrl, name, about, postsCount, commentsCount)
             })
     }
-
 }
-
-
 export const profileService = new ProfileService();
