@@ -21,7 +21,7 @@ class User {
         let currentMonth = new Date().getMonth();
 
         if (currentYear === year && currentDay === day && currentMonth === month) {
-            result = fullDate.toLocaleDateString()
+            result = fullDate.toLocaleTimeString().split("/").join(".");
         } else {
             result = fullDate.toLocaleString().split("/").join(".");
         }

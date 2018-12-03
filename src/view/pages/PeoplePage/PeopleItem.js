@@ -6,11 +6,12 @@ import './PeoplePage.css'
 
 
 const PeopleItem = ({ user }) => {
-    const { image, name, aboutShort } = user;
-    return (
-        <div class="media userContainer">
+    const { id, image, name, aboutShort } = user;
 
-            <img className="rounded-circle peopleImage" src={image} alt="Generic placeholder image" />
+    return (
+        <div className="media userContainer">
+
+            <img className="rounded-circle peopleImage" src={image} alt="Generic placeholder" />
 
             <div className="media-body p-1">
                 <h5 className="mt-0 pl-5">{name}</h5>
