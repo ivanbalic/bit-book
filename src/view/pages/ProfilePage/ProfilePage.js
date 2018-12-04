@@ -29,7 +29,7 @@ class ProfilePage extends Component {
     render() {
         return (
             <>
-                <div class="jumbotron mt-5">
+                <div class="jumbotron mt-5 col-10 mx-auto">
                     <img src={this.state.myProfile.image} alt="profileImage" className="profileImage rounded-circle" />
                     <h1 class="display-4 text-center">{this.state.myProfile.name}</h1>
                     <hr className="my-4" />

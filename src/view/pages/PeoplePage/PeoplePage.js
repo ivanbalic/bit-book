@@ -46,10 +46,10 @@ class PeoplePage extends Component {
 
         return (
 
-            <>
+            <div className='col-10'>
                 <SearchBar onSearchChange={this.searchEventHandler} />
                 <PeopleList users={filteredUsers} />
-            </>
+            </div>
         );
     }
 }

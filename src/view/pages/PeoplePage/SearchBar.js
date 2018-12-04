@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 const SearchBar = ({ onSearchChange }) => {
 
 
@@ -12,7 +11,6 @@ const SearchBar = ({ onSearchChange }) => {
         </>
     )
 }
-
 
 export {
     SearchBar
