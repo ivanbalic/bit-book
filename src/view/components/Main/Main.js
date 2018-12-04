@@ -11,8 +11,8 @@ const Main = (props) => {
         <main className='container'>
             <Switch>
                 <Route path='/post-details/:postType/:postId' component={SinglePostPage} />
+                <Route path='/profile/:userId' component={ProfilePage} />
                 <Route path='/people' component={PeoplePage} />
-                <Route path='/profile' component={ProfilePage} />
                 <Route path='/' component={FeedPage} />
             </Switch>
         </main>

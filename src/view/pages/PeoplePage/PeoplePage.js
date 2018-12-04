@@ -16,7 +16,7 @@ class PeoplePage extends Component {
         }
     }
 
-    fetchUser = () => {
+    fetchUsers = () => {
 
         userService.fetchUsers()
             .then(users => {
@@ -31,7 +31,7 @@ class PeoplePage extends Component {
 
 
     componentDidMount() {
-        this.fetchUser();
+        this.fetchUsers();
     }
 
 
