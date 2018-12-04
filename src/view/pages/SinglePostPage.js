@@ -23,19 +23,18 @@ class SinglePostPage extends Component {
         commentService.fetchPost(postId, postType)
             .then((post) => {
                 this.setState({
-                    post: post
+                    post
                 })
             });
     }
 
     render() {
         const { post, comments } = this.state;
-        let noCommentMessage;
-        let commentList;
+
 
         if (!post) {
             return (
-                <p>No comments</p>
+                <p>Loading...</p>
             );
         }
 
@@ -44,9 +43,7 @@ class SinglePostPage extends Component {
                 <div className='mt-4 p-4 border'>
                     {createFeedContent(post)}
                 </div>
-                <CommentInput />
-                <CommentList postId={post.id} />
-                {comments ? commentList : noCommentMessage}
+                <CommentList loadComments={this.loadComments} comment={comments} postId={this.state.postId} />
             </>
         );
     }

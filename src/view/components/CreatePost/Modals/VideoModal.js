@@ -19,7 +19,7 @@ class VideoModal extends Component {
         }
         postService.createPost(payload, "VideoPosts")
             .then(response => {
-                return response.json();
+                this.props.loadPosts();
             })
             .catch((err) => {
                 console.log(err);
