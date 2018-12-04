@@ -23,10 +23,6 @@ class CommentList extends Component {
             })
     }
 
-    // onSuccess = () => {
-    //     this.loadComments();
-    // }
-
     componentDidMount() {
         this.loadComments();
     }
@@ -39,7 +35,12 @@ class CommentList extends Component {
             return <h1 className='text-center mt-4'>Loading...</h1>
         }
         if (!comments.length) {
-            return <h1 className='text-center mt-4'>No comments!</h1>
+            return (
+                <>
+                    <CommentInput postId={this.props.postId} loadComments={this.loadComments} />
+                    <h1 className='text-center mt-4'>No comments!</h1>
+                </>
+            )
         }
 
         console.log(comments);
@@ -56,8 +57,6 @@ class CommentList extends Component {
             </>
         );
     }
-
-
 }
 
 export default CommentList;

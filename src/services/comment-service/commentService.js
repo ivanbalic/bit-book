@@ -82,7 +82,7 @@ class CommentService {
 
     }
 
-    createComment(data, onSuccess) {
+    createComment(data) {
         const POSTS_ENDPOINT = `${BASE_ENDPOINT}/Comments`;
 
         return fetch(POSTS_ENDPOINT, {
@@ -94,9 +94,6 @@ class CommentService {
             },
             body: JSON.stringify(data),
         })
-            .then((respose) => {
-                // onSuccess();
-            })
     }
 }
 
