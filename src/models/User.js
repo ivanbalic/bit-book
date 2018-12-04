@@ -1,6 +1,6 @@
 
 class User {
-    constructor(image = 'https://via.placeholder.com/150', name, description, postNumber, commentNumber, lastPostDate, id) {
+    constructor(image = 'https://via.placeholder.com/150', name, description, postNumber, commentNumber, lastPostDate, id, email) {
         this.image = image;
         this.name = name;
         this.description = description;
@@ -8,6 +8,7 @@ class User {
         this.commentNumber = commentNumber;
         this.lastPostDate = lastPostDate;
         this.id = id;
+        this.email = email;
     }
 
     getPostTime() {
