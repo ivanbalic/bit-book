@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 import { commentService } from '../../services/comment-service/commentService';
 
@@ -29,9 +30,7 @@ class SinglePostPage extends Component {
     }
 
     render() {
-        const { post, comments } = this.state;
-        let noCommentMessage;
-        let commentList;
+        const { post } = this.state;
 
         if (!post) {
             return (
@@ -41,12 +40,12 @@ class SinglePostPage extends Component {
 
         return (
             <>
+                {post.userId === 747 ? <Link to='/' className='btn btn-primary mt-3'>Delete Post</Link> : null}
                 <div className='mt-4 p-4 border'>
                     {createFeedContent(post)}
                 </div>
                 <CommentInput />
                 <CommentList postId={post.id} />
-                {comments ? commentList : noCommentMessage}
             </>
         );
     }
