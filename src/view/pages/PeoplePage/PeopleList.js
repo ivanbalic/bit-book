@@ -13,7 +13,6 @@ const PeopleList = ({ users }) => {
 
     return (
         <div>
-
             {listOfPeople}
         </div>
     )
