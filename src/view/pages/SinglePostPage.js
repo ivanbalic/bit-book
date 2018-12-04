@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
-import { commentService } from '../../services/comment-service/commentService';
+import { postService } from '../../services/post-service/postService';
 
 import { createFeedContent } from '../../shared/createFeedContent';
 import CommentList from '../components/CommentList/CommentList';
-import { CommentInput } from '../components/CommentInput/CommentInput';
+
 
 class SinglePostPage extends Component {
     constructor(props) {
@@ -17,10 +18,14 @@ class SinglePostPage extends Component {
         }
     }
 
+    deletePostHandler = () => {
+        postService.deletePost(this.state.postId);
+    }
+
     componentDidMount() {
         const { postId, postType } = this.state;
 
-        commentService.fetchPost(postId, postType)
+        postService.fetchSinglePost(postId, postType)
             .then((post) => {
                 this.setState({
                     post
@@ -29,8 +34,7 @@ class SinglePostPage extends Component {
     }
 
     render() {
-        const { post, comments } = this.state;
-
+        const { post } = this.state;
 
         if (!post) {
             return (
@@ -40,10 +44,11 @@ class SinglePostPage extends Component {
 
         return (
             <>
+                {post.userId === 747 ? <Link to='/' className='btn btn-primary mt-3' onClick={this.deletePostHandler}>Delete Post</Link> : null}
                 <div className='mt-4 p-4 border'>
                     {createFeedContent(post)}
                 </div>
-                <CommentList loadComments={this.loadComments} comment={comments} postId={this.state.postId} />
+                <CommentList postId={this.state.postId} />
             </>
         );
     }

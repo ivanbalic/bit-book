@@ -6,7 +6,7 @@ import { createFeedContent } from '../../../shared/createFeedContent';
 const FeedItem = ({ post }) => {
     console.log(post);
 
-    const { commentsNum, id, type } = post;
+    const { commentsNum, id, type, userId } = post;
 
 
     return (
@@ -17,7 +17,7 @@ const FeedItem = ({ post }) => {
             <div className="card-body">
                 <p className="card-text">
                     <small className="text-muted">{post.getCapitalType()} post</small>
-                    <Link to={`/post-details/${type}/${id}`}>
+                    <Link to={`/post-details/${type}/${id}/${userId}`}>
                         <small className="text-muted float-right">{commentsNum} Comment/s</small>
                     </Link>
                 </p>
