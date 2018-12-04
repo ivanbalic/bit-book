@@ -45,6 +45,25 @@ class UserService {
             })
     }
 
+    fetchSingleUser(userId) {
+        const SINGLE_USER_BASE = `http://bitbookapi.azurewebsites.net/api/users/${userId}`;
+        return fetch(SINGLE_USER_BASE, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                'Key': 'bitbookdev',
+                'SessionId': '2990B489-DB94-4AC1-ACDE-CDC9CC3EAEAE',
+            }
+        })
+            .then(response => {
+                return response.json();
+            })
+            .then(user => {
+                const { userId, name, email, about, avatarUrl, postsCount, commentsCount } = user;
+                return new User(avatarUrl, name, about, postsCount, commentsCount, null, userId, email);
+            })
+    }
+
 
 }
 
