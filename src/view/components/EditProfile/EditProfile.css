@@ -1,0 +1,12 @@
+.alertParagraph{
+    font-size: 14px;
+    color:red;
+}
+
+.alertInput:focus {
+    border: 0.2em solid red !important;
+}
+
+p:empty:before{
+    content: "\200b";
+}
