@@ -12,8 +12,8 @@ class ProfilePage extends Component {
         }
     }
 
-    fetchProfile = () => {
-        userService.fetchProfile()
+    fetchSingleUser = () => {
+        userService.fetchSingleUser(this.props.match.params.userId)
             .then(myProfile => {
                 this.setState({ myProfile })
                 console.log(this.state.myProfile.image);
@@ -22,14 +22,14 @@ class ProfilePage extends Component {
 
 
     componentDidMount() {
-        this.fetchProfile()
+        this.fetchSingleUser()
     }
 
 
     render() {
         return (
             <>
-                <div class="jumbotron">
+                <div class="jumbotron mt-5">
                     <img src={this.state.myProfile.image} alt="profileImage" className="profileImage rounded-circle" />
                     <h1 class="display-4 text-center">{this.state.myProfile.name}</h1>
                     <hr className="my-4" />
