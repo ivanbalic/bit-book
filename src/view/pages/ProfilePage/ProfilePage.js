@@ -17,7 +17,6 @@ class ProfilePage extends Component {
         userService.fetchProfile(this.props.match.params.userId)
             .then(myProfile => {
                 this.setState({ myProfile })
-                console.log(this.state.myProfile.image);
             })
     }
 
@@ -30,7 +29,7 @@ class ProfilePage extends Component {
     render() {
         return (
             <>
-                <div class="jumbotron mt-5 col-10 mx-auto">
+                <div className="jumbotron mt-5 col-10 mx-auto">
                     <img src={this.state.myProfile.image} alt="profileImage" className="profileImage rounded-circle" />
                     <h1 className="display-4 text-center">{this.state.myProfile.name}</h1>
                     <a href="#!" className="d-flex justify-content-center" data-toggle="modal" data-target="#editProfile">Edit profile</a>

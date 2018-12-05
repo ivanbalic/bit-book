@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import { postService } from '../../../../services/post-service/postService';
 import './VideoModal.css';
+import { validationService } from '../../../../services/validation-service/validationService';
 class VideoModal extends Component {
     constructor(props) {
         super(props)
 
         this.state = {
             inputValue: "",
-            error: true,
+            error: false,
             buttonClass: "btn btn-primary disabled"
-
         }
     }
 
@@ -17,6 +17,7 @@ class VideoModal extends Component {
         const payload = {
             videoUrl: this.state.inputValue
         }
+
         postService.createPost(payload, "VideoPosts")
             .then(response => {
                 this.props.loadPosts();
@@ -31,25 +32,39 @@ class VideoModal extends Component {
     getInputValue = (event) => {
         let stateObj;
 
-        if (event.target.value.startsWith("https://www.youtube.com") || event.target.value.startsWith("http://www.youtube.com")) {
-            console.log(event.target.value);
-            const embedVideo = event.target.value.split("watch?v=").join("embed/");
+        // if (event.target.value.startsWith("https://www.youtube.com") || event.target.value.startsWith("http://www.youtube.com")) {
+        //     console.log(event.target.value);
+        //     const embedVideo = event.target.value.split("watch?v=").join("embed/");
 
-            console.log(embedVideo);
+        //     console.log(embedVideo);
+        //     stateObj = {
+        //         inputValue: embedVideo,
+        //         error: true,
+        //         buttonClass: "btn btn-primary",
+        //     }
+        // } else {
+        //     stateObj = {
+        //         inputValue: event.target.value,
+        //         error: false,
+        //         buttonClass: "btn btn-primary disabled",
+        //     }
+        // }
+
+        if (validationService.isVideoUrlCorrect(event.target.value)) {
+            const embedVideo = event.target.value.split("watch?v=").join("embed/");
             stateObj = {
                 inputValue: embedVideo,
-                error: true,
+                error: false,
                 buttonClass: "btn btn-primary",
             }
         } else {
             stateObj = {
                 inputValue: event.target.value,
-                error: false,
+                error: true,
                 buttonClass: "btn btn-primary disabled",
             }
-
-
         }
+
         this.setState(stateObj)
     }
 
@@ -65,15 +80,14 @@ class VideoModal extends Component {
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            <input type="text" className={this.state.error ? "form-control col-11 m-3" : "form-control col-11 m-3 alertInput"} value={this.state.inputValue} onChange={this.getInputValue} placeholder="Post video" aria-label="Username" />
-                            <p className="alertParagraph">{this.state.error ? "" : "Error input"}</p>
+                            <input type="text" className={this.state.error ? "form-control col-11 m-3 alertInput" : "form-control col-11 m-3"} value={this.state.inputValue} onChange={this.getInputValue} placeholder="Post video" aria-label="Username" />
+                            <p className="alertParagraph">{this.state.error ? "Error input" : ""}</p>
                             <div className="modal-footer">
                                 <button onClick={this.createPostHandler} type="button" className={this.state.buttonClass} data-toggle={this.state.error ? "modal" : ""} data-target="#videoModal">Post video</button>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </>
         );
     }
