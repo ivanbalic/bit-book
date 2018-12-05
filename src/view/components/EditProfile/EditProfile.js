@@ -9,13 +9,14 @@ class EditProfile extends Component {
         super(props);
 
         this.state = {
-            name: null,
+            name: '',
             email: null,
             aboutShort: null,
-            description: null,
-            avatarUrl: null,
-            buttonClass: "btn btn-primary disabled",
-            error: true,
+            description: '',
+            avatarUrl: '',
+            errorName: false,
+            errorUrl: false,
+            errorDescription: false
         }
     }
 
@@ -26,10 +27,11 @@ class EditProfile extends Component {
                     name: profile.name,
                     email: profile.email,
                     aboutShort: profile.aboutShort,
-                    description: profile.about,
+                    description: profile.description,
                     avatarUrl: profile.image
                 })
             })
+        console.log(this.state);
     }
 
     editProfileHandler = () => {
@@ -47,24 +49,56 @@ class EditProfile extends Component {
             });
     }
 
+    closeEditProfileHandler = () => {
+        userService.fetchProfile()
+            .then((profile) => {
+                this.setState({
+                    name: profile.name,
+                    email: profile.email,
+                    aboutShort: profile.aboutShort,
+                    description: profile.description,
+                    avatarUrl: profile.image,
+                    errorName: false,
+                    errorUrl: false,
+                    errorDescription: false
+                })
+            })
+    }
+
     getTextValue = (event, stateName) => {
         let stateObj;
         const inputValue = event.target.value;
-        if (!inputValue.includes("http") && inputValue.length >= 3 && inputValue.length <= 30 && !inputValue.includes("<") && !inputValue.includes("www")) {
-            stateObj = {
-                // ...this.state,
-                [stateName]: event.target.value,
-                error: true,
-                buttonClass: "btn btn-primary",
+
+        if (stateName === 'name') {
+            if (!inputValue.includes("http") && inputValue.length >= 3 && inputValue.length <= 30 && !inputValue.includes("<") && !inputValue.includes("www")) {
+                stateObj = {
+                    // ...this.state,
+                    name: event.target.value,
+                    errorName: false
+                }
+            } else {
+                stateObj = {
+                    // ...this.state,
+                    name: event.target.value,
+                    errorName: true
+                }
             }
         } else {
-            stateObj = {
-                // ...this.state,
-                [stateName]: event.target.value,
-                error: false,
-                buttonClass: "btn btn-primary disabled",
+            if (!inputValue.includes("http") && inputValue.length >= 3 && !inputValue.includes("<") && !inputValue.includes("www")) {
+                stateObj = {
+                    // ...this.state,
+                    description: event.target.value,
+                    errorDescription: false
+                }
+            } else {
+                stateObj = {
+                    // ...this.state,
+                    description: event.target.value,
+                    errorDescription: true
+                }
             }
         }
+
         this.setState(stateObj);
         console.log(this.state);
     }
@@ -96,27 +130,32 @@ class EditProfile extends Component {
             console.log(event.target.value);
             stateObj = {
                 avatarUrl: event.target.value,
-                error: true,
-                buttonClass: "btn btn-primary",
+                errorUrl: false
             }
         } else {
             stateObj = {
                 avatarUrl: event.target.value,
-                error: false,
-                buttonClass: "btn btn-primary disabled",
+                errorUrl: true
             }
         }
         this.setState(stateObj)
     }
 
     render() {
+        let error;
+        if (this.state.errorName || this.state.errorUrl || this.state.errorDescription) {
+            error = true;
+        } else {
+            error = false;
+        }
+
         return (
             <div className="modal fade" id="editProfile" tabIndex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                 <div className="modal-dialog modal-dialog-centered" role="document">
                     <div className="modal-content">
                         <div className="modal-header border-0 p-2">
                             <h5 className="modal-title" id="exampleModalLongTitle">Update profile</h5>
-                            <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                            <button type="button" className="close" data-dismiss="modal" aria-label="Close" onClick={this.closeEditProfileHandler}>
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
@@ -124,29 +163,32 @@ class EditProfile extends Component {
                             <div className="container-fluid">
                                 <div className="row">
                                     <div className="col-md-4 col-sm-12">
-                                        <img className="my-0 mx-auto w-100" src={this.state.error ? this.state.avatarUrl : "http://thepalmsofmobay.com/admin/framework/img/user2-160x160.jpg"} alt="Generic placeholder" />
+                                        <img className="my-0 mx-auto w-100" src={this.state.errorUrl ? "http://thepalmsofmobay.com/admin/framework/img/user2-160x160.jpg" : this.state.avatarUrl} alt="Generic placeholder" />
                                         <button type="button" className="btn btn-primary mt-2">UPLOAD PHOTO</button>
                                     </div>
-                                    <div className="col-md-8 col-sm-12">
-                                        <input type="text" className={this.state.error ? "form-control my-3" : "form-control my-3 alertInput"} placeholder="Name" onChange={(event) => { this.getTextValue(event, 'name') }} />
-                                        <p className="alertParagraph">{this.state.error ? "" : `${this.state.name.length}/30`}</p>
+                                    <div className="col-md-8 col-sm-12 mt-4">
+                                        <label htmlFor="user-name" className="col-form-label">Name:</label>
+                                        <input type="text" className={this.state.errorName ? "form-control alertInputName" : "form-control"} onChange={(event) => { this.getTextValue(event, 'name') }} value={this.state.name} id="user-name" />
+                                        <p className="alertParagraph">{this.state.errorName ? `${this.state.name.length}/30` : ""}</p>
                                     </div>
                                 </div>
                                 <div className="row">
                                     <div className="col-md-12">
-                                        <input type="text" className={this.state.error ? "form-control col-11 m-3" : "form-control col-11 m-3 alertInput"} value={this.state.inputValue} onChange={this.getAvatarUrl} placeholder="Post image" aria-label="Username" />
-                                        <p className="alertParagraph">{this.state.error ? "" : "Error input"}</p>
+                                        <label htmlFor="avatar-url" className="col-form-label">Avatar URL:</label>
+                                        <input type="text" className={this.state.errorUrl ? "form-control alertInputUrl" : "form-control"} onChange={this.getAvatarUrl} aria-label="Username" value={this.state.avatarUrl} id="avatar-url" />
+                                        <p className="alertParagraph">{this.state.errorUrl ? "Error input" : ""}</p>
                                     </div>
                                     <div className="col-md-12">
-                                        <input type="text" className={this.state.error ? "form-control my-3" : "form-control my-3 alertInput"} placeholder="Description" onChange={(event) => { this.getTextValue(event, 'description') }} />
-                                        <p className="alertParagraph">{this.state.error ? "" : "Error input"}</p>
+                                        <label htmlFor="user-description" className="col-form-label">Description:</label>
+                                        <input type="text" className={this.state.errorDescription ? "form-control alertInputDescription" : "form-control"} onChange={(event) => { this.getTextValue(event, 'description') }} value={this.state.description} id="user-description" />
+                                        <p className="alertParagraph">{this.state.errorDescription ? "Error input" : ""}</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div className="modal-footer border-0 p-2">
-                            <button type="button" className="btn btn-secondary" data-dismiss="modal">CLOSE</button>
-                            <button type="button" className={this.state.buttonClass} onClick={this.editProfileHandler} data-toggle={this.state.error ? "modal" : ""} data-target="#editProfile">UPDATE</button>
+                            <button type="button" className="btn btn-secondary" data-dismiss="modal" onClick={this.closeEditProfileHandler}>CLOSE</button>
+                            <button type="button" className={error ? "btn btn-primary disabled" : "btn btn-primary"} onClick={error ? null : this.editProfileHandler} data-toggle={error ? "" : "modal"} data-target="#editProfile">UPDATE</button>
                         </div>
                     </div>
                 </div>
