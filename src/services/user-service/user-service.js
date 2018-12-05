@@ -15,6 +15,7 @@ class UserService {
             }
         })
             .then(response => {
+
                 return response.json()
             })
             .then(profile => {
@@ -37,7 +38,6 @@ class UserService {
                 return response.json();
             })
             .then(userList => {
-                console.log("userList", userList);
                 return userList.map(user => {
                     const { id, name, aboutShort, lastPostDate, avatarUrl } = user;
                     const dateObj = new Date(lastPostDate)

@@ -1,27 +1,88 @@
-import React from 'react';
+import React, { Component } from 'react';
+
+import { loginService } from '../../../../services/login-service/login-service';
 
 
-const Login = () => {
-    return (
-        <form>
-            <div class="form-group">
-                <label for="exampleInputEmail1">Email address</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
-                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+class Login extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            usernameInput: '',
+            passwordInput: '',
+            errorMessage: '',
+        }
+    }
+
+    getUsernameValue = (event) => {
+        let stateObj;
+        // if (!event.target.value.includes("http") && event.target.value.length >= 3 && !event.target.value.includes("<") && !event.target.value.includes("www")) {
+        stateObj = {
+            usernameInput: event.target.value,
+        }
+        // }
+        // else {
+        //     stateObj = {
+        //         inputValue: event.target.value,
+
+        //     }
+        // }
+        this.setState(stateObj);
+    }
+
+    getPasswordValue = (event) => {
+        let stateObj;
+        // if (!event.target.value.includes("http") && event.target.value.length >= 3 && !event.target.value.includes("<") && !event.target.value.includes("www")) {
+        stateObj = {
+            passwordInput: event.target.value,
+        }
+        // }
+        // else {
+        //     stateObj = {
+        //         inputValue: event.target.value,
+
+        //     }
+        // }
+        this.setState(stateObj)
+    }
+
+    onLoginHandler = () => {
+        const payload = {
+            username: this.state.usernameInput,
+            password: this.state.passwordInput,
+        }
+        loginService.loginFetch(payload)
+            .then((response) => {
+
+                if (response.status >= 200 && response.status < 300) {
+
+                    this.props.loginStatusCallback();
+                }
+                return response.json();
+            }).then((response) => {
+
+                sessionStorage.setItem('sessionId', response.sessionId);
+            }
+            );
+    }
+
+    render() {
+
+        return (
+            <div>
+                <div className="form-group">
+                    <label htmlFor="exampleInputEmail1">Username</label>
+                    <input type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Username" onChange={this.getUsernameValue} />
+                    <small id="emailHelp" className="form-text text-muted">{this.state.errorMessage}</small>
+                </div>
+                <div className="form-group">
+                    <label htmlFor="exampleInputPassword1">Password</label>
+                    <input type="password" className="form-control" id="exampleInputPassword1" placeholder="Password" onChange={this.getPasswordValue} />
+                </div>
+
+                <button type="submit" className="btn btn-primary col-12" onClick={this.onLoginHandler}>Login</button>
             </div>
-            <div class="form-group">
-                <label for="exampleInputPassword1">Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" />
-            </div>
-
-            <button type="submit" class="btn btn-primary col-12">Login</button>
-        </form>
-        // {/* <div className="row">
-        //     <label className="col-12">Email<input type="email" className="col-12" /></label>
-        //     <label className="col-12">Password<input type="password" className="col-12" /></label>
-        //     <button>Login</button>
-        // </div> */}
-    )
+        )
+    }
 }
 
 export default Login;
