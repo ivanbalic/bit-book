@@ -1,0 +1,20 @@
+.alertParagraph{
+    font-size: 14px;
+    color:red;
+}
+
+.alertInputName {
+    border: 0.2em solid red !important;
+}
+
+.alertInputUrl {
+    border: 0.2em solid red !important;
+}
+
+.alertInputDescription {
+    border: 0.2em solid red !important;
+}
+
+p:empty:before{
+    content: "\200b";
+}

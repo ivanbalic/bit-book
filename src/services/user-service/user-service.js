@@ -18,8 +18,8 @@ class UserService {
                 return response.json()
             })
             .then(profile => {
-                const { avatarUrl, name, about, postsCount, commentsCount } = profile;
-                return new User(avatarUrl, name, about, postsCount, commentsCount)
+                const { avatarUrl, name, about, postsCount, commentsCount, userId, email } = profile;
+                return new User(avatarUrl, name, about, postsCount, commentsCount, null, userId, email);
             })
     }
 
@@ -63,6 +63,20 @@ class UserService {
                 const { userId, name, email, about, avatarUrl, postsCount, commentsCount } = user;
                 return new User(avatarUrl, name, about, postsCount, commentsCount, null, userId, email);
             })
+    }
+
+    changeProfile(data) {
+        const PROFILE_BASE = "http://bitbookapi.azurewebsites.net/api/Profiles";
+        return fetch(PROFILE_BASE, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                'Key': 'bitbookdev',
+                'SessionId': '2990B489-DB94-4AC1-ACDE-CDC9CC3EAEAE',
+            },
+            body: JSON.stringify(data)
+
+        });
     }
 
 }
