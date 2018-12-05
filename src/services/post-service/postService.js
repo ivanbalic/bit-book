@@ -41,9 +41,58 @@ class PostService {
                                 throw new Error("Invalid post type");
                         }
                     });
-                // mappedPosts.length = 30;
+
                 return mappedPosts;
             });
+    }
+
+    fetchSinglePost(postId, postType) {
+
+        let queryParam;
+
+        switch (postType) {
+            case 'text':
+                queryParam = 'TextPosts';
+                break;
+            case 'video':
+                queryParam = 'VideoPosts';
+                break;
+            case 'image':
+                queryParam = 'ImagePosts';
+                break;
+
+            default:
+                break;
+        }
+
+        const POSTS_ENDPOINT = `${BASE_ENDPOINT}/${queryParam}/${postId}`;
+
+        return fetch(POSTS_ENDPOINT, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json; charset=utf-8",
+                'Key': 'bitbookdev',
+                'SessionId': '2990B489-DB94-4AC1-ACDE-CDC9CC3EAEAE',
+            }
+        })
+            .then((response) => {
+
+                return response.json();
+            })
+            .then((post) => {
+
+                switch (post.type) {
+                    case "image":
+                        return new ImagePost(post);
+                    case "video":
+                        return new VideoPost(post);
+                    case "text":
+                        return new TextPost(post);
+                    default:
+                        throw new Error("Invalid post type");
+                }
+            })
+
     }
 
     createPost(data, queryParam) {
@@ -59,6 +108,20 @@ class PostService {
             body: JSON.stringify(data),
         })
 
+    }
+
+    deletePost = (postId) => {
+
+        const DELETE_POST_ENDPOINT = `${BASE_ENDPOINT}/Posts/${postId}`;
+
+        return fetch(DELETE_POST_ENDPOINT, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json; charset=utf-8",
+                'Key': 'bitbookdev',
+                'SessionId': '2990B489-DB94-4AC1-ACDE-CDC9CC3EAEAE',
+            },
+        })
     }
 
 }

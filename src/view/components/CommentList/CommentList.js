@@ -5,10 +5,10 @@ import { CommentItem } from '../CommentItem/CommentItem';
 import { commentService } from '../../../services/comment-service/commentService';
 
 
+
 class CommentList extends Component {
     constructor(props) {
         super(props);
-
         this.state = {
             comments: null,
         }
@@ -22,6 +22,9 @@ class CommentList extends Component {
                 })
             })
     }
+
+
+
 
     componentDidMount() {
         this.loadComments();
@@ -42,8 +45,6 @@ class CommentList extends Component {
                 </>
             )
         }
-
-        console.log(comments);
 
         const commentItemList = comments.map((comment) => {
             return <CommentItem key={comment.id} comment={comment} />

@@ -13,20 +13,24 @@ class User {
 
     getPostTime() {
         let result;
-        var fullDate = new Date(this.lastPostDate);
-        let year = fullDate.getFullYear();
-        let day = fullDate.getDay();
-        let month = fullDate.getMonth();
 
+        let year = this.lastPostDate.getFullYear();
+        let day = this.lastPostDate.getDate();
+        let month = this.lastPostDate.getMonth();
 
         let currentYear = new Date().getFullYear();
-        let currentDay = new Date().getDay();
+        let currentDay = new Date().getDate();
         let currentMonth = new Date().getMonth();
 
-        if (currentYear === year && currentDay === day && currentMonth === month) {
-            result = fullDate.toLocaleTimeString().split("/").join(".");
+
+        if (year != 1970) {
+            if (currentYear === year && currentDay === day && currentMonth === month) {
+                result = this.lastPostDate.toLocaleTimeString().split("/").join(".");
+            } else {
+                result = this.lastPostDate.toLocaleString().split("/").join(".");
+            }
         } else {
-            result = fullDate.toLocaleString().split("/").join(".");
+            result = false;
         }
         return result;
     }
