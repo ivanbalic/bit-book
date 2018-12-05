@@ -40,7 +40,8 @@ class UserService {
                 console.log("userList", userList);
                 return userList.map(user => {
                     const { id, name, aboutShort, lastPostDate, avatarUrl } = user;
-                    return new User(avatarUrl, name, aboutShort, null, null, lastPostDate, id);
+                    const dateObj = new Date(lastPostDate)
+                    return new User(avatarUrl, name, aboutShort, null, null, dateObj, id);
                 })
             })
     }

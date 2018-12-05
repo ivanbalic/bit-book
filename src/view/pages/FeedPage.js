@@ -60,7 +60,7 @@ class FeedPage extends Component {
                     <FeedList posts={filteredPosts} />
                     <CreatePost loadPosts={this.loadPosts} />
                 </div>
-                <div className="col-2 mt-4 pr-4">
+                <div className="col-2 mt-4 pr-4 h-25">
                     <select className='w-100' onChange={this.filterParamChangeHandler}>
                         <option value="all">All posts</option>
                         <option value="text">Text</option>

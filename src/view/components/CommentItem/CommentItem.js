@@ -1,18 +1,47 @@
-import React from 'react';
-
+import React, { Component } from 'react';
+import { userService } from '../../../services/user-service/user-service';
 import './CommentItem.css';
 
-const CommentItem = ({ comment }) => {
+class CommentItem extends Component {
+    constructor(props) {
+        super(props)
 
-    return (
-        <li className="media my-4 p-2 border">
-            <img className="mr-3" src="http://via.placeholder.com/100x100" alt="Generic placeholder image" />
-            <div className="media-body">
-                <h5 className="mt-0 mb-1">{comment.authorName}</h5>
-                {comment.body}
-            </div>
-        </li>
-    );
+        this.state = {
+            userId: this.props.comment.authorId,
+            userImage: ""
+        }
+    }
+
+
+    loadSingleUser = () => {
+        console.log(this.props.comment)
+        userService.fetchSingleUser(this.state.userId)
+            .then(user => {
+                this.setState({ userImage: user.image })
+            })
+    }
+
+    componentDidMount() {
+        this.loadSingleUser();
+    }
+
+    render() {
+        if (!this.state.userImage) {
+            return <h3>Loading...</h3>
+        }
+        return (
+            <li className="media my-4 p-2 border row" >
+                <div className="col-3">
+                    <img className="mr-3 w-100 rounded-circle" src={this.state.userImage} alt="Generic placeholder image" />
+                </div>
+                <div className="media-body col-9">
+                    <h5 className="mt-0 mb-1">{this.props.comment.authorName}</h5>
+                    {this.props.comment.body}
+                </div>
+
+            </li>
+        );
+    }
 }
 
 export {

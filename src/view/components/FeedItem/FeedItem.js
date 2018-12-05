@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import { createFeedContent } from '../../../shared/createFeedContent';
 
 const FeedItem = ({ post }) => {
-    console.log(post);
 
     const { commentsNum, id, type, userId } = post;
 
