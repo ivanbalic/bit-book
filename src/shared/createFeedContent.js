@@ -6,7 +6,6 @@ import { PostVideo } from '../view/components/FeedItem/FeedContent/PostVideo';
 
 
 const createFeedContent = (post) => {
-    console.log(post);
 
     if (post.isImage()) {
         return (
