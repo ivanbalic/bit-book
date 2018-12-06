@@ -1,19 +1,12 @@
 import User from '../../models/User';
-
+import { headers } from '../../shared/headers';
 
 class UserService {
 
 
     fetchProfile() {
         const PROFILE_BASE = "http://bitbookapi.azurewebsites.net/api/profile";
-        return fetch(PROFILE_BASE, {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-                'Key': 'bitbookdev',
-                'SessionId': '2990B489-DB94-4AC1-ACDE-CDC9CC3EAEAE',
-            }
-        })
+        return fetch(PROFILE_BASE, headers.getRequestHeader())
             .then(response => {
 
                 return response.json()
@@ -26,14 +19,7 @@ class UserService {
 
     fetchUsers() {
         const USERS_BASE = 'http://bitbookapi.azurewebsites.net/api/users';
-        return fetch(USERS_BASE, {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-                'Key': 'bitbookdev',
-                'SessionId': '2990B489-DB94-4AC1-ACDE-CDC9CC3EAEAE',
-            }
-        })
+        return fetch(USERS_BASE, headers.getRequestHeader())
             .then(response => {
                 return response.json();
             })
@@ -48,14 +34,7 @@ class UserService {
 
     fetchSingleUser(userId) {
         const SINGLE_USER_BASE = `http://bitbookapi.azurewebsites.net/api/users/${userId}`;
-        return fetch(SINGLE_USER_BASE, {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-                'Key': 'bitbookdev',
-                'SessionId': '2990B489-DB94-4AC1-ACDE-CDC9CC3EAEAE',
-            }
-        })
+        return fetch(SINGLE_USER_BASE, headers.getRequestHeader())
             .then(response => {
                 return response.json();
             })
@@ -67,16 +46,7 @@ class UserService {
 
     changeProfile(data) {
         const PROFILE_BASE = "http://bitbookapi.azurewebsites.net/api/Profiles";
-        return fetch(PROFILE_BASE, {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json",
-                'Key': 'bitbookdev',
-                'SessionId': '2990B489-DB94-4AC1-ACDE-CDC9CC3EAEAE',
-            },
-            body: JSON.stringify(data)
-
-        });
+        return fetch(PROFILE_BASE, headers.putRequestHeader(data));
     }
 
 }

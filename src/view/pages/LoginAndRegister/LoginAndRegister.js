@@ -9,16 +9,19 @@ class LoginAndRegister extends Component {
         super(props)
 
         this.state = {
-            isLogin: true
+            isLoginTabActive: true
 
         }
     }
 
 
-    registerHandler = () => {
-        this.setState({ isLogin: false })
+    onRegisterTabSelect = () => {
+        this.setState({ isLoginTabActive: false })
     }
 
+    onLoginTabSelect = () => {
+        this.setState({ isLoginTabActive: true })
+    }
 
 
     render() {
@@ -31,12 +34,12 @@ class LoginAndRegister extends Component {
                     </div>
                     <div className="offset-1 col-6">
                         <nav class="nav nav-pills nav-justified row mb-4 p-3">
-                            <a className={this.state.isLogin ? "nav-item nav-link active col-6" : "nav-item nav-link col-6"} href="#" onClick={this.loginHandler}>Login</a>
-                            <a className={this.state.isLogin ? "nav-item nav-link col-6" : "nav-item nav-link active col-6"} href="#" onClick={this.registerHandler}>Register</a>
+                            <a className={this.state.isLoginTabActive ? "nav-item nav-link active col-6" : "nav-item nav-link col-6"} href="#" onClick={this.onLoginTabSelect}>Login</a>
+                            <a className={this.state.isLoginTabActive ? "nav-item nav-link col-6" : "nav-item nav-link active col-6"} href="#" onClick={this.onRegisterTabSelect}>Register</a>
                         </nav>
 
                         {
-                            this.state.isLogin ? <Login loginStatusCallback={this.props.loginStatusCallback} /> : <Register />
+                            this.state.isLoginTabActive ? <Login loginStatusCallback={this.props.loginStatusCallback} /> : <Register />
                         }
                     </div>
                 </div>
