@@ -11,6 +11,12 @@ class LoginService {
         return fetch(LOGIN_ENDPOINT, headers.authHeader(data)
         )
     }
+
+
+    isLoggedIn() {
+        return sessionStorage.getItem("sessionId")
+    }
+
 }
 
 

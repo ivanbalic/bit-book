@@ -16,6 +16,7 @@ class SinglePostPage extends Component {
             post: null,
             comments: null
         }
+
     }
 
     deletePostHandler = () => {
@@ -35,6 +36,7 @@ class SinglePostPage extends Component {
 
     render() {
         const { post } = this.state;
+        console.log(this.state)
 
         if (!post) {
             return (
@@ -44,7 +46,7 @@ class SinglePostPage extends Component {
 
         return (
             <div className="col-10">
-                {post.userId === 747 ? <Link to='/' className='btn btn-primary mt-3' onClick={this.deletePostHandler}>Delete Post</Link> : null}
+                {post.userId == sessionStorage.getItem("mojid") ? <Link to='/' className='btn btn-primary mt-3' onClick={this.deletePostHandler}>Delete Post</Link> : null}
                 <div className='mt-4 p-4 border'>
                     {createFeedContent(post)}
                 </div>

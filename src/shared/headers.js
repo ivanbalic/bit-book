@@ -1,3 +1,7 @@
+
+
+
+
 class Headers {
 
     getRequestHeader() {
@@ -29,7 +33,7 @@ class Headers {
             headers: {
                 "Content-Type": "application/json; charset=utf-8",
                 'Key': 'bitbookdev',
-                'SessionId': '2990B489-DB94-4AC1-ACDE-CDC9CC3EAEAE',
+                'SessionId': sessionStorage.getItem('sessionId'),
             },
         }
     }
@@ -40,7 +44,7 @@ class Headers {
             headers: {
                 "Content-Type": "application/json",
                 'Key': 'bitbookdev',
-                'SessionId': '2990B489-DB94-4AC1-ACDE-CDC9CC3EAEAE',
+                'SessionId': sessionStorage.getItem('sessionId'),
             },
             body: JSON.stringify(data)
 

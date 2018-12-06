@@ -18,32 +18,18 @@ class Register extends Component {
     }
     getUsernameValue = (event) => {
         let stateObj;
-        // if (!event.target.value.includes("http") && event.target.value.length >= 3 && !event.target.value.includes("<") && !event.target.value.includes("www")) {
         stateObj = {
             usernameInput: event.target.value,
         }
-        // }
-        // else {
-        //     stateObj = {
-        //         inputValue: event.target.value,
 
-        //     }
-        // }
         this.setState(stateObj);
     }
     getPasswordValue = (event) => {
         let stateObj;
-        // if (!event.target.value.includes("http") && event.target.value.length >= 3 && !event.target.value.includes("<") && !event.target.value.includes("www")) {
         stateObj = {
             passwordInput: event.target.value,
         }
-        // }
-        // else {
-        //     stateObj = {
-        //         inputValue: event.target.value,
 
-        //     }
-        // }
         this.setState(stateObj)
     }
     getEmailValue = (event) => {

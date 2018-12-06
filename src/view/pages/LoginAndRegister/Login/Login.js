@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from "react-router-dom";
 
 import { loginService } from '../../../../services/login-service/login-service';
 
@@ -15,33 +16,19 @@ class Login extends Component {
 
     getUsernameValue = (event) => {
         let stateObj;
-        // if (!event.target.value.includes("http") && event.target.value.length >= 3 && !event.target.value.includes("<") && !event.target.value.includes("www")) {
         stateObj = {
             usernameInput: event.target.value,
         }
-        // }
-        // else {
-        //     stateObj = {
-        //         inputValue: event.target.value,
 
-        //     }
-        // }
         this.setState(stateObj);
     }
 
     getPasswordValue = (event) => {
         let stateObj;
-        // if (!event.target.value.includes("http") && event.target.value.length >= 3 && !event.target.value.includes("<") && !event.target.value.includes("www")) {
         stateObj = {
             passwordInput: event.target.value,
         }
-        // }
-        // else {
-        //     stateObj = {
-        //         inputValue: event.target.value,
 
-        //     }
-        // }
         this.setState(stateObj)
     }
 
@@ -52,20 +39,23 @@ class Login extends Component {
         }
         loginService.loginFetch(payload)
             .then((response) => {
+                console.log(response);
 
                 if (response.status >= 200 && response.status < 300) {
 
-                    this.props.loginStatusCallback();
+                    return response.json();
                 }
-                return response.json();
-            }).then((response) => {
-
+            })
+            .then((response) => {
+                console.log(response)
                 sessionStorage.setItem('sessionId', response.sessionId);
-            }
-            );
+                // this.props.loginStatusCallback();
+                this.props.history.push('/profile')
+            })
     }
 
     render() {
+        console.log(this.state.errorMessage);
 
         return (
             <div>
@@ -85,4 +75,4 @@ class Login extends Component {
     }
 }
 
-export default Login;
+export default withRouter(Login);

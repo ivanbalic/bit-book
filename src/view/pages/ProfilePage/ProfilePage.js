@@ -14,9 +14,11 @@ class ProfilePage extends Component {
     }
 
     fetchProfile = () => {
-        userService.fetchProfile(this.props.match.params.userId)
+        userService.fetchSingleUser(this.props.match.params.userId)
             .then(myProfile => {
                 this.setState({ myProfile })
+                sessionStorage.setItem("mojid", myProfile.id)
+
             })
     }
 
@@ -27,6 +29,8 @@ class ProfilePage extends Component {
 
 
     render() {
+        console.log('props', this.props.match.params.userId);
+
         return (
             <>
                 <div className="jumbotron mt-5 col-10 mx-auto">
