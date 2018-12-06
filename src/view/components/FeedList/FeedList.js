@@ -1,8 +1,6 @@
 import React from 'react';
 import { FeedItem } from '../FeedItem/FeedItem';
 
-import './FeedList.css'
-
 const FeedList = ({ posts }) => {
 
 
