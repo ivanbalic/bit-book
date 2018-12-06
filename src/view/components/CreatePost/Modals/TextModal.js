@@ -34,19 +34,6 @@ class TextModal extends Component {
 
     getInputValue = (event) => {
         let stateObj;
-        // if (!event.target.value.includes("http") && event.target.value.length >= 3 && !event.target.value.includes("<") && !event.target.value.includes("www")) {
-        //     stateObj = {
-        //         inputValue: event.target.value,
-        //         error: true,
-        //         buttonClass: "btn btn-primary",
-        //     }
-        // } else {
-        //     stateObj = {
-        //         inputValue: event.target.value,
-        //         error: false,
-        //         buttonClass: "btn btn-primary disabled",
-        //     }
-        // }
 
         if (validationService.isTextCorrect(event.target.value)) {
             stateObj = {

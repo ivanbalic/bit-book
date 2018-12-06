@@ -33,40 +33,6 @@ class ImageModal extends Component {
     getInputValue = (event) => {
         let stateObj;
 
-        // let splitInputValue = event.target.value.split(".")
-        // const ext = splitInputValue[splitInputValue.length - 1].toLowerCase();
-        // console.log(ext);
-        // let imageFormat = false;
-        // switch (ext) {
-        //     case "jpg":
-        //         imageFormat = "jpg"
-        //         break;
-        //     case "png":
-        //         imageFormat = "png"
-        //         break;
-        //     case "svg":
-        //         imageFormat = "svg"
-        //         break;
-        //     case "gif":
-        //         imageFormat = "gif"
-        //         break;
-        //     default:
-        // }
-        // if ((event.target.value.startsWith("https://") || event.target.value.startsWith("http://")) && event.target.value.endsWith(imageFormat)) {
-        //     console.log(event.target.value);
-        //     stateObj = {
-        //         inputValue: event.target.value,
-        //         error: true,
-        //         buttonClass: "btn btn-primary",
-        //     }
-        // } else {
-        //     stateObj = {
-        //         inputValue: event.target.value,
-        //         error: false,
-        //         buttonClass: "btn btn-primary disabled",
-        //     }
-        // }
-
         if (validationService.isImageUrlCorrect(event.target.value)) {
             stateObj = {
                 inputValue: event.target.value,

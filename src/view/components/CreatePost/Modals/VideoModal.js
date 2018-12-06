@@ -32,24 +32,6 @@ class VideoModal extends Component {
     getInputValue = (event) => {
         let stateObj;
 
-        // if (event.target.value.startsWith("https://www.youtube.com") || event.target.value.startsWith("http://www.youtube.com")) {
-        //     console.log(event.target.value);
-        //     const embedVideo = event.target.value.split("watch?v=").join("embed/");
-
-        //     console.log(embedVideo);
-        //     stateObj = {
-        //         inputValue: embedVideo,
-        //         error: true,
-        //         buttonClass: "btn btn-primary",
-        //     }
-        // } else {
-        //     stateObj = {
-        //         inputValue: event.target.value,
-        //         error: false,
-        //         buttonClass: "btn btn-primary disabled",
-        //     }
-        // }
-
         if (validationService.isVideoUrlCorrect(event.target.value)) {
             const embedVideo = event.target.value.split("watch?v=").join("embed/");
             stateObj = {
