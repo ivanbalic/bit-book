@@ -4,15 +4,15 @@
 }
 
 .alertInputName {
-    border: 0.2em solid red !important;
+    border: 1px solid red !important;
 }
 
 .alertInputUrl {
-    border: 0.2em solid red !important;
+    border: 1px solid red !important;
 }
 
 .alertInputDescription {
-    border: 0.2em solid red !important;
+    border: 1px solid red !important;
 }
 
 p:empty:before{

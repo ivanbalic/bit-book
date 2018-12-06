@@ -32,7 +32,7 @@ class CommentItem extends Component {
         return (
             <li className="media my-4 p-2 border row" >
                 <div className="col-3">
-                    <img className="mr-3 w-100 rounded-circle" src={this.state.userImage} alt="Generic placeholder image" />
+                    <img className="mr-3 w-100 rounded-circle" src={this.state.userImage} alt="Generic placeholder" />
                 </div>
                 <div className="media-body col-9">
                     <h5 className="mt-0 mb-1">{this.props.comment.authorName}</h5>

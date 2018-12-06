@@ -1,8 +1,6 @@
 import React from 'react';
 import { FeedItem } from '../FeedItem/FeedItem';
 
-import './FeedList.css'
-
 const FeedList = ({ posts }) => {
 
 
@@ -10,7 +8,7 @@ const FeedList = ({ posts }) => {
         <>
             <div>
                 {posts.map((post) => {
-                    return <FeedItem post={post} />
+                    return <FeedItem key={post.id} post={post} />
                 })}
             </div>
         </>
