@@ -23,7 +23,7 @@ class User {
         let currentMonth = new Date().getMonth();
 
 
-        if (year != 1970) {
+        if (year !== 1970) {
             if (currentYear === year && currentDay === day && currentMonth === month) {
                 result = this.lastPostDate.toLocaleTimeString().split("/").join(".");
             } else {

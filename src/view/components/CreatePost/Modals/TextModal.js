@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { postService } from '../../../../services/post-service/postService';
-import './TextModal.css'
 
+import { postService } from '../../../../services/post-service/postService';
+import { validationService } from '../../../../services/validation-service/validationService';
+import './TextModal.css'
 
 class TextModal extends Component {
     constructor(props) {
@@ -9,19 +10,15 @@ class TextModal extends Component {
 
         this.state = {
             inputValue: "",
-            error: true,
+            error: false,
             buttonClass: "btn btn-primary disabled"
         }
     }
-
-
-
 
     createPostHandler = () => {
         const payload = {
             text: this.state.inputValue
         }
-
         postService.createPost(payload, "TextPosts")
             .then(response => {
                 this.props.loadPosts();
@@ -33,25 +30,23 @@ class TextModal extends Component {
             inputValue: "",
             aria: "true"
         })
-
     }
 
     getInputValue = (event) => {
         let stateObj;
-        if (!event.target.value.includes("http") && event.target.value.length >= 3 && !event.target.value.includes("<") && !event.target.value.includes("www")) {
+
+        if (validationService.isTextCorrect(event.target.value)) {
             stateObj = {
                 inputValue: event.target.value,
-                error: true,
+                error: false,
                 buttonClass: "btn btn-primary",
             }
         } else {
             stateObj = {
                 inputValue: event.target.value,
-                error: false,
+                error: true,
                 buttonClass: "btn btn-primary disabled",
             }
-
-
         }
         this.setState(stateObj)
     }
@@ -68,8 +63,8 @@ class TextModal extends Component {
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            <input type="text" className={this.state.error ? "form-control col-11 m-3" : "form-control col-11 m-3 alertInput"} value={this.state.inputValue} onChange={this.getInputValue} placeholder="Post text" aria-label="Username" />
-                            <p className="alertParagraph">{this.state.error ? "" : "Error input"}</p>
+                            <input type="text" className={this.state.error ? "form-control col-11 m-3 alertInput" : "form-control col-11 m-3"} value={this.state.inputValue} onChange={this.getInputValue} placeholder="Post text" aria-label="Username" />
+                            <p className="alertParagraph">{this.state.error ? "Error input" : ""}</p>
                             <div className="modal-footer">
                                 <button onClick={this.createPostHandler} className={this.state.buttonClass} data-toggle={this.state.error ? "modal" : ""} data-target="#textModal">Post text</button>
                             </div>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import { userService } from '../../../services/user-service/user-service';
+import { validationService } from '../../../services/validation-service/validationService';
 
 import './EditProfile.css';
 
@@ -16,7 +17,8 @@ class EditProfile extends Component {
             avatarUrl: '',
             errorName: false,
             errorUrl: false,
-            errorDescription: false
+            errorDescription: false,
+            buttonClass: 'btn btn-primary disabled'
         }
     }
 
@@ -31,7 +33,6 @@ class EditProfile extends Component {
                     avatarUrl: profile.image
                 })
             })
-        console.log(this.state);
     }
 
     editProfileHandler = () => {
@@ -70,74 +71,57 @@ class EditProfile extends Component {
         const inputValue = event.target.value;
 
         if (stateName === 'name') {
-            if (!inputValue.includes("http") && inputValue.length >= 3 && inputValue.length <= 30 && !inputValue.includes("<") && !inputValue.includes("www")) {
+
+            if (validationService.isNameCorrect(inputValue)) {
                 stateObj = {
-                    // ...this.state,
                     name: event.target.value,
-                    errorName: false
+                    errorName: false,
+                    buttonClass: 'btn btn-primary'
                 }
             } else {
                 stateObj = {
-                    // ...this.state,
                     name: event.target.value,
-                    errorName: true
+                    errorName: true,
+                    buttonClass: 'btn btn-primary disabled'
                 }
             }
         } else {
-            if (!inputValue.includes("http") && inputValue.length >= 3 && !inputValue.includes("<") && !inputValue.includes("www")) {
+
+            if (validationService.isTextCorrect(inputValue)) {
                 stateObj = {
-                    // ...this.state,
                     description: event.target.value,
-                    errorDescription: false
+                    errorDescription: false,
+                    buttonClass: 'btn btn-primary'
                 }
             } else {
                 stateObj = {
-                    // ...this.state,
                     description: event.target.value,
-                    errorDescription: true
+                    errorDescription: true,
+                    buttonClass: 'btn btn-primary disabled'
                 }
             }
         }
 
         this.setState(stateObj);
-        console.log(this.state);
     }
 
     getAvatarUrl = (event) => {
         let stateObj;
 
-        let splitInputValue = event.target.value.split(".")
-        const ext = splitInputValue[splitInputValue.length - 1].toLowerCase();
-        console.log(ext);
-        let imageFormat = false;
-        switch (ext) {
-            case "jpg":
-                imageFormat = "jpg"
-                break;
-            case "png":
-                imageFormat = "png"
-                break;
-            case "svg":
-                imageFormat = "svg"
-                break;
-            case "gif":
-                imageFormat = "gif"
-                break;
-            default:
-        }
-
-        if ((event.target.value.startsWith("https://") || event.target.value.startsWith("http://")) && event.target.value.endsWith(imageFormat)) {
-            console.log(event.target.value);
+        if (validationService.isImageUrlCorrect(event.target.value)) {
             stateObj = {
                 avatarUrl: event.target.value,
-                errorUrl: false
+                errorUrl: false,
+                buttonClass: 'btn btn-primary'
             }
         } else {
             stateObj = {
                 avatarUrl: event.target.value,
-                errorUrl: true
+                errorUrl: true,
+                buttonClass: 'btn btn-primary disabled'
             }
         }
+
         this.setState(stateObj)
     }
 
@@ -188,7 +172,7 @@ class EditProfile extends Component {
                         </div>
                         <div className="modal-footer border-0 p-2">
                             <button type="button" className="btn btn-secondary" data-dismiss="modal" onClick={this.closeEditProfileHandler}>CLOSE</button>
-                            <button type="button" className={error ? "btn btn-primary disabled" : "btn btn-primary"} onClick={error ? null : this.editProfileHandler} data-toggle={error ? "" : "modal"} data-target="#editProfile">UPDATE</button>
+                            <button type="button" className={this.state.buttonClass} onClick={error ? null : this.editProfileHandler} data-toggle={error ? "" : "modal"} data-target="#editProfile">UPDATE</button>
                         </div>
                     </div>
                 </div>

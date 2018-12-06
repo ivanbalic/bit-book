@@ -10,7 +10,7 @@ const FeedList = ({ posts }) => {
         <>
             <div>
                 {posts.map((post) => {
-                    return <FeedItem post={post} />
+                    return <FeedItem key={post.id} post={post} />
                 })}
             </div>
         </>
