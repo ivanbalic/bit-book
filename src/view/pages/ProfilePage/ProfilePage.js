@@ -17,7 +17,10 @@ class ProfilePage extends Component {
     fetchProfile = (userId) => {
         userService.fetchSingleUser(userId)
             .then(myProfile => {
-                this.setState({ userId: userId, myProfile })
+                this.setState({
+                    myProfile,
+                    userId: userId
+                })
             })
     }
 
