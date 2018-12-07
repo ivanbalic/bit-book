@@ -49,8 +49,7 @@ class Login extends Component {
             .then((response) => {
                 console.log(response)
                 sessionStorage.setItem('sessionId', response.sessionId);
-                // this.props.loginStatusCallback();
-                this.props.history.push('/profile')
+                this.props.history.push('/profile');
             })
     }
 

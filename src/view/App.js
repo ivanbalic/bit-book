@@ -7,7 +7,6 @@ import ProfilePage from './pages/ProfilePage/ProfilePage';
 import SinglePostPage from './pages/SinglePostPage';
 import { Header } from './components/Header/Header';
 import { Footer } from './components/Footer/Footer';
-// import { Main } from './components/Main/Main';
 import LoginAndRegister from './pages/LoginAndRegister/LoginAndRegister';
 
 import './App.css';

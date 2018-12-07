@@ -19,7 +19,7 @@ const Header = () => {
                             <Link className="nav-link" to="/people">People</Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to={`/profile/${sessionStorage.getItem("mojid")}`}>Profile</Link>
+                            <Link className="nav-link" to={`/profile/${sessionStorage.getItem("userId")}`}>Profile</Link>
                         </li>
                     </ul>
                 </div>

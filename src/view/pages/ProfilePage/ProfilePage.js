@@ -10,15 +10,14 @@ class ProfilePage extends Component {
         super(props);
         this.state = {
             myProfile: "",
+            userId: this.props.match.params.userId,
         }
     }
 
     fetchProfile = () => {
-        userService.fetchSingleUser(this.props.match.params.userId)
+        userService.fetchSingleUser(this.state.userId)
             .then(myProfile => {
                 this.setState({ myProfile })
-                sessionStorage.setItem("mojid", myProfile.id)
-
             })
     }
 
@@ -27,16 +26,32 @@ class ProfilePage extends Component {
         this.fetchProfile()
     }
 
+    componentWillUpdate() {
+        this.fetchProfile()
+    }
+
+    componentWillReceiveProps(nextProps) {
+
+        if (nextProps.match.params.userId !== this.props.match.params.userId) {
+            this.setState({
+                userId: nextProps.match.params.userId,
+            })
+        }
+    }
+
 
     render() {
-        console.log('props', this.props.match.params.userId);
 
         return (
             <>
                 <div className="jumbotron mt-5 col-10 mx-auto">
                     <img src={this.state.myProfile.image} alt="profileImage" className="profileImage rounded-circle" />
                     <h1 className="display-4 text-center">{this.state.myProfile.name}</h1>
-                    <a href="#!" className="d-flex justify-content-center" data-toggle="modal" data-target="#editProfile">Edit profile</a>
+                    {
+                        this.state.userId === sessionStorage.getItem('userId') ?
+                            <a href="#!" className="d-flex justify-content-center" data-toggle="modal" data-target="#editProfile">Edit profile</a>
+                            : null
+                    }
                     <EditProfile fetchProfile={this.fetchProfile} />
                     <hr className="my-4" />
                     <p className="text-center">{this.state.myProfile.description}</p>
