@@ -9,39 +9,33 @@ class ProfilePage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            myProfile: "",
-            userId: this.props.match.params.userId,
+            myProfile: {},
+            userId: this.props.match.params.userId
         }
     }
 
-    fetchProfile = () => {
-        userService.fetchSingleUser(this.state.userId)
+    fetchProfile = (userId) => {
+        userService.fetchSingleUser(userId)
             .then(myProfile => {
-                this.setState({ myProfile })
+                this.setState({ userId: userId, myProfile })
             })
     }
 
+    componentDidUpdate(prevProps) {
+
+        if (prevProps.match.params.userId !== this.props.match.params.userId) {
+            this.fetchProfile(this.props.match.params.userId)
+
+        }
+    }
 
     componentDidMount() {
-        this.fetchProfile()
+        this.fetchProfile(this.props.match.params.userId)
     }
 
-    componentWillUpdate() {
-        this.fetchProfile()
-    }
-
-    componentWillReceiveProps(nextProps) {
-
-        if (nextProps.match.params.userId !== this.props.match.params.userId) {
-            this.setState({
-                userId: nextProps.match.params.userId,
-            })
-        }
-    }
 
 
     render() {
-
         return (
             <>
                 <div className="jumbotron mt-5 col-10 mx-auto">

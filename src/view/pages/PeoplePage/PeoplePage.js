@@ -46,7 +46,7 @@ class PeoplePage extends Component {
 
         return (
 
-            <div className='col-10'>
+            <div className='col-10 offset-1'>
                 <SearchBar onSearchChange={this.searchEventHandler} />
                 <PeopleList users={filteredUsers} />
             </div>
