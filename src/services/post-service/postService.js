@@ -3,19 +3,17 @@ import VideoPost from '../../models/VideoPost';
 import ImagePost from '../../models/ImagePost';
 import TextPost from '../../models/TextPost';
 
+import { headers } from '../../shared/headers';
+
 class PostService {
 
     fetchPosts() {
         const POSTS_ENDPOINT = `${BASE_ENDPOINT}/posts`;
 
-        return fetch(POSTS_ENDPOINT, {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-                'Key': 'bitbookdev',
-                'SessionId': '2990B489-DB94-4AC1-ACDE-CDC9CC3EAEAE',
-            }
-        })
+        const options = headers.getRequestHeader()
+        console.log(options);
+
+        return fetch(POSTS_ENDPOINT, headers.getRequestHeader())
             .then((response) => {
                 return response.json();
             })
@@ -67,14 +65,7 @@ class PostService {
 
         const POSTS_ENDPOINT = `${BASE_ENDPOINT}/${queryParam}/${postId}`;
 
-        return fetch(POSTS_ENDPOINT, {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json; charset=utf-8",
-                'Key': 'bitbookdev',
-                'SessionId': '2990B489-DB94-4AC1-ACDE-CDC9CC3EAEAE',
-            }
-        })
+        return fetch(POSTS_ENDPOINT, headers.getRequestHeader())
             .then((response) => {
 
                 return response.json();
@@ -98,15 +89,7 @@ class PostService {
     createPost(data, queryParam) {
         const POSTS_ENDPOINT = `${BASE_ENDPOINT}/${queryParam}`;
 
-        return fetch(POSTS_ENDPOINT, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json; charset=utf-8",
-                'Key': 'bitbookdev',
-                'SessionId': '2990B489-DB94-4AC1-ACDE-CDC9CC3EAEAE',
-            },
-            body: JSON.stringify(data),
-        })
+        return fetch(POSTS_ENDPOINT, headers.postRequestHeader(data))
 
     }
 
@@ -114,14 +97,7 @@ class PostService {
 
         const DELETE_POST_ENDPOINT = `${BASE_ENDPOINT}/Posts/${postId}`;
 
-        return fetch(DELETE_POST_ENDPOINT, {
-            method: "DELETE",
-            headers: {
-                "Content-Type": "application/json; charset=utf-8",
-                'Key': 'bitbookdev',
-                'SessionId': '2990B489-DB94-4AC1-ACDE-CDC9CC3EAEAE',
-            },
-        })
+        return fetch(DELETE_POST_ENDPOINT, headers.deleteRequestHeader())
     }
 
 }

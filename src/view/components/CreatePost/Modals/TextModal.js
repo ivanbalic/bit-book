@@ -66,7 +66,7 @@ class TextModal extends Component {
                             <input type="text" className={this.state.error ? "form-control col-11 m-3 alertInput" : "form-control col-11 m-3"} value={this.state.inputValue} onChange={this.getInputValue} placeholder="Post text" aria-label="Username" />
                             <p className="alertParagraph">{this.state.error ? "Error input" : ""}</p>
                             <div className="modal-footer">
-                                <button onClick={this.createPostHandler} className={this.state.buttonClass} data-toggle={this.state.error ? "modal" : ""} data-target="#textModal">Post text</button>
+                                <button onClick={this.createPostHandler} className={this.state.buttonClass} data-toggle={this.state.error ? "" : "modal"} data-target="#textModal">Post text</button>
                             </div>
                         </div>
                     </div>

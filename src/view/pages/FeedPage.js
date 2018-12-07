@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import { FeedList } from '../components/FeedList/FeedList';
 import { postService } from '../../services/post-service/postService';
+import { userService } from '../../services/user-service/user-service';
 import { CreatePost } from '../components/CreatePost/CreatePost';
 
 class FeedPage extends Component {
@@ -33,6 +34,14 @@ class FeedPage extends Component {
     componentDidMount() {
 
         this.loadPosts();
+
+        userService.fetchProfile()
+            .then((profile) => {
+                console.log(profile);
+
+                sessionStorage.setItem('userId', profile.id);
+            })
+
     }
 
     render() {

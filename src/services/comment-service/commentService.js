@@ -1,5 +1,6 @@
 import { BASE_ENDPOINT } from '../../shared/constants';
 import Comment from '../../models/Comment';
+import { headers } from '../../shared/headers';
 
 class CommentService {
 
@@ -7,14 +8,7 @@ class CommentService {
 
         const COMMENTS_ENDPOINT = `${BASE_ENDPOINT}/comments?postId=${postId}`;
 
-        return fetch(COMMENTS_ENDPOINT, {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-                'Key': 'bitbookdev',
-                'SessionId': '2990B489-DB94-4AC1-ACDE-CDC9CC3EAEAE',
-            }
-        })
+        return fetch(COMMENTS_ENDPOINT, headers.getRequestHeader())
             .then((response) => {
 
                 return response.json();
@@ -33,15 +27,7 @@ class CommentService {
     createComment(data) {
         const POSTS_ENDPOINT = `${BASE_ENDPOINT}/Comments`;
 
-        return fetch(POSTS_ENDPOINT, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json; charset=utf-8",
-                'Key': 'bitbookdev',
-                'SessionId': '2990B489-DB94-4AC1-ACDE-CDC9CC3EAEAE',
-            },
-            body: JSON.stringify(data),
-        })
+        return fetch(POSTS_ENDPOINT, headers.postRequestHeader(data))
     }
 }
 
