@@ -11,6 +11,7 @@ class FeedPage extends Component {
         this.state = {
             posts: null,
             filterParam: 'all',
+            isPostDeleted: false
         }
     }
 
@@ -25,11 +26,13 @@ class FeedPage extends Component {
         });
     }
 
+
     filterParamChangeHandler = (event) => {
         this.setState({
             filterParam: event.target.value,
         });
     }
+
 
     componentDidMount() {
 
@@ -41,8 +44,8 @@ class FeedPage extends Component {
 
                 sessionStorage.setItem('userId', profile.id);
             })
-
     }
+
 
     render() {
 

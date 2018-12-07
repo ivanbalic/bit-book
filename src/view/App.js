@@ -15,17 +15,30 @@ import { loginService } from '../services/login-service/login-service';
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      isLoggedIn: false,
-    }
+    // this.state = {
+    // isLoggedIn: false,
+    //   isPostDeleted: false,
   }
 
 
-  loginStatusCallback = () => {
-    this.setState({
-      isLoggedIn: true,
-    });
-  }
+
+  // loginStatusCallback = () => {
+  //   this.setState({
+  //     isLoggedIn: true,
+  //   });
+  // }
+
+  // deletePostCallback = () => {
+  //   this.setState({
+  //     isPostDeleted: true,
+  //   });
+  // }
+
+  // reloadedPostsCallback = () => {
+  //   this.setState({
+  //     isPostDeleted: false,
+  //   });
+  // }
 
   loggedContent() {
     return (
