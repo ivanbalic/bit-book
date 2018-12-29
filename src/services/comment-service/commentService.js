@@ -14,8 +14,6 @@ class CommentService {
                 return response.json();
             })
             .then((comments) => {
-                console.log("Comments response:", comments);
-
 
                 const mappedComments = comments.map((comment) => {
                     return new Comment(comment.id, comment.body, comment.postId, comment.authorName, comment.authorId);

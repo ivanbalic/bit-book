@@ -1,7 +1,3 @@
-
-
-
-
 class Headers {
 
     getRequestHeader() {
@@ -51,7 +47,6 @@ class Headers {
         }
     }
 
-    /// auth Header === login And Register header
     authHeader(data) {
         return {
             method: "POST",
