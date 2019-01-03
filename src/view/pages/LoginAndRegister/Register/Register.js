@@ -87,29 +87,28 @@ class Register extends Component {
 
 
     render() {
-        console.log(this.state)
         return (
             <div>
-                <div class="form-group">
-                    <label for="exampleInputEmail1" >Username</label>
-                    <input type="text" onChange={this.getUsernameValue} class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter username" />
+                <div className="form-group">
+                    <label htmlFor="username" >Username</label>
+                    <input type="text" onChange={this.getUsernameValue} className="form-control" id="username" aria-describedby="emailHelp" placeholder="Enter username" />
                 </div>
-                <div class="form-group">
-                    <label for="exampleInputEmail1" >FullName</label>
-                    <input type="text" onChange={this.getFullName} class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter full name" />
+                <div className="form-group">
+                    <label htmlFor="fullname" >FullName</label>
+                    <input type="text" onChange={this.getFullName} className="form-control" id="fullname" aria-describedby="emailHelp" placeholder="Enter full name" />
                 </div>
-                <div class="form-group">
-                    <label for="exampleInputEmail1" >Email address</label>
-                    <input type="email" onChange={this.getEmailValue} class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
-                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                <div className="form-group">
+                    <label htmlFor="email" >Email address</label>
+                    <input type="email" onChange={this.getEmailValue} className="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" />
+                    <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
                 </div>
-                <div class="form-group">
-                    <label for="exampleInputPassword1" >Password</label>
-                    <input type="password" onChange={this.getPasswordValue} class="form-control" id="exampleInputPassword1" placeholder="Password" />
+                <div className="form-group">
+                    <label htmlFor="password" >Password</label>
+                    <input type="password" onChange={this.getPasswordValue} className="form-control" id="password" placeholder="Password" />
                 </div>
 
-                <button type="submit" class="btn btn-primary col-12" onClick={this.onRegisterHandler}>Register</button>
-                <small id="emailHelp" class="form-text text-muted">{this.state.registerStatus ? 'Succses! You can login now!' : ''}</small>
+                <button type="submit" className="btn btn-primary col-12" onClick={this.onRegisterHandler}>Register</button>
+                <small id="emailHelp" className="form-text text-muted">{this.state.registerStatus ? 'Succses! You can login now!' : ''}</small>
             </div>
         )
     }

@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './view/App';
+import { App } from './view/App';
 import { BrowserRouter } from 'react-router-dom';
 
 import "jquery/dist/jquery.min.js";

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
 import FeedPage from './pages/FeedPage';
@@ -12,35 +12,9 @@ import LoginAndRegister from './pages/LoginAndRegister/LoginAndRegister';
 import './App.css';
 import { loginService } from '../services/login-service/login-service';
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    // this.state = {
-    // isLoggedIn: false,
-    //   isPostDeleted: false,
-  }
+const App = () => {
 
-
-
-  // loginStatusCallback = () => {
-  //   this.setState({
-  //     isLoggedIn: true,
-  //   });
-  // }
-
-  // deletePostCallback = () => {
-  //   this.setState({
-  //     isPostDeleted: true,
-  //   });
-  // }
-
-  // reloadedPostsCallback = () => {
-  //   this.setState({
-  //     isPostDeleted: false,
-  //   });
-  // }
-
-  loggedContent() {
+  const loggedContent = () => {
     return (
       <>
         <Header />
@@ -60,19 +34,15 @@ class App extends Component {
     )
   }
 
-
-  render() {
-
-    return (
-      <>
-
-        {loginService.isLoggedIn() ? this.loggedContent() :
-          <Route path='/' component={LoginAndRegister} />}
-
-
-      </>
-    );
-  }
+  return (
+    <>
+      {
+        loginService.isLoggedIn() ? 
+        loggedContent() :
+        <Route path='/' component={LoginAndRegister} />
+      }
+    </>
+  );
 }
 
-export default App;
+export { App };

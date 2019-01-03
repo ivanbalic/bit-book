@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 
 import { postService } from '../../services/post-service/postService';
 
@@ -50,7 +49,7 @@ class SinglePostPage extends Component {
 
         return (
             <div className="col-10 offset-1">
-                {post.userId == sessionStorage.getItem("userId") ? <button className='btn btn-primary mt-3' onClick={this.deletePostHandler}>Delete Post</button> : null}
+                {post.userId === parseInt(sessionStorage.getItem("userId")) ? <button className='btn btn-primary mt-3' onClick={this.deletePostHandler}>Delete Post</button> : null}
                 <div className='mt-4 p-4 border'>
                     {createFeedContent(post)}
                 </div>
