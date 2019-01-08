@@ -16,9 +16,8 @@ class FeedPage extends Component {
     }
 
     loadPosts = () => {
-        const postsPromise = postService.fetchPosts();
-
-        postsPromise.then((myPosts) => {
+        postService.fetchPosts()
+            .then((myPosts) => {
 
             this.setState({
                 posts: myPosts,
@@ -40,7 +39,6 @@ class FeedPage extends Component {
 
         userService.fetchProfile()
             .then((profile) => {
-                console.log(profile);
 
                 sessionStorage.setItem('userId', profile.id);
             })

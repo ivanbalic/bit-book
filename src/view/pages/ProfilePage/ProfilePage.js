@@ -49,7 +49,7 @@ class ProfilePage extends Component {
                             <a href="#!" className="d-flex justify-content-center" data-toggle="modal" data-target="#editProfile">Edit profile</a>
                             : null
                     }
-                    <EditProfile fetchProfile={this.fetchProfile} />
+                    <EditProfile fetchProfile={this.fetchProfile} userId={this.state.userId} />
                     <hr className="my-4" />
                     <p className="text-center">{this.state.myProfile.description}</p>
                     <p className="lead text-center">

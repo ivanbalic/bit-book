@@ -14,7 +14,6 @@ class CommentItem extends Component {
 
 
     loadSingleUser = () => {
-        console.log(this.props.comment)
         userService.fetchSingleUser(this.state.userId)
             .then(user => {
                 this.setState({ userImage: user.image })

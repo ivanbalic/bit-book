@@ -10,9 +10,6 @@ class PostService {
     fetchPosts() {
         const POSTS_ENDPOINT = `${BASE_ENDPOINT}/posts`;
 
-        const options = headers.getRequestHeader()
-        console.log(options);
-
         return fetch(POSTS_ENDPOINT, headers.getRequestHeader())
             .then((response) => {
                 return response.json();

@@ -23,9 +23,6 @@ class CommentList extends Component {
             })
     }
 
-
-
-
     componentDidMount() {
         this.loadComments();
     }

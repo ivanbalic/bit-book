@@ -10,7 +10,7 @@ class User {
         this.id = id;
         this.email = email;
     }
-
+//TODO
     getPostTime() {
         let result;
 

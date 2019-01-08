@@ -40,7 +40,6 @@ class Login extends Component {
         }
         loginService.loginFetch(payload)
             .then((response) => {
-                console.log(response);
 
                 if (response.status >= 200 && response.status < 300) {
                     this.setState({
@@ -50,7 +49,6 @@ class Login extends Component {
                 return response.json();
             })
             .then((response) => {
-                console.log(response);
 
                 if (this.state.reqStatus === true) {
                     
@@ -65,7 +63,6 @@ class Login extends Component {
     }
 
     render() {
-        console.log(this.state.errorMessage);
 
         return (
             <div>

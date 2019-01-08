@@ -22,9 +22,6 @@ class VideoModal extends Component {
             .then(response => {
                 this.props.loadPosts();
             })
-            .catch((err) => {
-                console.log(err);
-            })
 
         this.setState({ inputValue: "" })
     }

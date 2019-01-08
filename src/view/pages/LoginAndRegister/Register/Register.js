@@ -66,20 +66,13 @@ class Register extends Component {
             name: this.state.fullNameInput,
             email: this.state.emailInput,
         }
-
-        console.log(payload);
-
-
+//TODO
         registerService.registerFetch(payload)
             .then((response) => {
                 if (response.status >= 200 && response.status < 300) {
-                    console.log(response);
 
                     this.registerStatusCheck();
                 }
-                return response.json();
-            }).then((response) => {
-                console.log(response);
             })
     }
 

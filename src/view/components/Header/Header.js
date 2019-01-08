@@ -2,6 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Header = () => {
+
+    const logoutHandler = () => {
+        sessionStorage.clear();
+    }
+
     return (
         <header className="container-fluid bg-light">
             <nav className="navbar navbar-expand-lg navbar-light bg-light container">
@@ -20,6 +25,9 @@ const Header = () => {
                         </li>
                         <li className="nav-item">
                             <Link className="nav-link" to={`/profile/${sessionStorage.getItem("userId")}`}>Profile</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link className="nav-link" to={`/`} onClick={logoutHandler}>Logout</Link>
                         </li>
                     </ul>
                 </div>

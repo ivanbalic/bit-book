@@ -46,7 +46,10 @@ class EditProfile extends Component {
 
         userService.changeProfile(payload)
             .then((response) => {
-                this.props.fetchProfile();
+                if (response.status >= 200 && response.status < 300) {
+                    
+                    this.props.fetchProfile(this.props.userId);
+                }
             });
     }
 
