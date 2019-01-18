@@ -41,20 +41,19 @@ class ProfilePage extends Component {
     render() {
         return (
             <>
-                <div className="jumbotron mt-5 col-10 mx-auto">
+            <EditProfile fetchProfile={this.fetchProfile} userId={this.state.userId} />
+                <div className="jumbotron mt-5 col-10 mx-auto element-bg radius d-flex flex-column justify-content-center">
                     <img src={this.state.myProfile.image} alt="profileImage" className="profileImage rounded-circle" />
                     <h1 className="display-4 text-center">{this.state.myProfile.name}</h1>
                     {
                         this.state.userId === sessionStorage.getItem('userId') ?
-                            <a href="#!" className="d-flex justify-content-center" data-toggle="modal" data-target="#editProfile">Edit profile</a>
+                            <button className="btn creat-post my-4 w-25 mx-auto" data-toggle="modal" data-target="#editProfile"><i className="fas fa-user-edit"></i></button>
                             : null
                     }
-                    <EditProfile fetchProfile={this.fetchProfile} userId={this.state.userId} />
-                    <hr className="my-4" />
-                    <p className="text-center">{this.state.myProfile.description}</p>
+                    <p className="text-center border-t pt-4">{this.state.myProfile.description}</p>
                     <p className="lead text-center">
-                        <a href="#!" className="btn btn-primary btn-lg m-3">{this.state.myProfile.postNumber} posts</a>
-                        <a href="#!" className="btn btn-primary btn-lg">{this.state.myProfile.commentNumber} comments</a>
+                        <button className="btn button-active btn-lg m-3 item-decoration">{this.state.myProfile.postNumber} posts</button>
+                        <button className="btn button-active btn-lg item-decoration">{this.state.myProfile.commentNumber} comments</button>
                     </p>
                 </div>
             </>

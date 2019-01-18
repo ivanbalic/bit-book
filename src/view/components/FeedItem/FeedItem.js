@@ -16,8 +16,8 @@ const FeedItem = ({ post }) => {
     }
 
     return (
-        <Link to={`/post-details/${type}/${id}/${userId}`} className="feed-link">
-            <div className="card my-4 feed-decoration element-bg">
+        <Link to={`/post-details/${type}/${id}/${userId}`} className="item-link">
+            <div className="card my-4 item-decoration element-bg">
                 <div className='p-3'>
                     {createFeedContent(post)}
                 </div>

@@ -25,19 +25,9 @@ class CommentItem extends Component {
     }
 
     render() {
-        if (!this.state.userImage) {
-            return (
-            <div class="sk-folding-cube">
-                <div class="sk-cube1 sk-cube"></div>
-                <div class="sk-cube2 sk-cube"></div>
-                <div class="sk-cube4 sk-cube"></div>
-                <div class="sk-cube3 sk-cube"></div>
-            </div>
-        );
-        }
         return (
-            <li className="media my-4 p-2 border row element-bg" >
-                <div className="col-3">
+            <li className="media my-4 p-2 border row element-bg radius" >
+                <div className="col-3 border-r">
                     <img className="mr-3 w-100 rounded-circle" src={this.state.userImage} alt="Generic placeholder" />
                 </div>
                 <div className="media-body col-9">

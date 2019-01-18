@@ -8,7 +8,7 @@ class CommentInput extends Component {
         this.state = {
             postId: this.props.postId,
             inputValue: '',
-            buttonClass: "btn btn-primary disabled"
+            buttonClass: "btn button-active disabled"
         }
     }
 
@@ -17,12 +17,12 @@ class CommentInput extends Component {
         if (!event.target.value.includes("http") && event.target.value.length >= 3 && !event.target.value.includes("<") && !event.target.value.includes("www")) {
             stateObj = {
                 inputValue: event.target.value,
-                buttonClass: "btn btn-primary",
+                buttonClass: "btn button-active",
             }
         } else {
             stateObj = {
                 inputValue: event.target.value,
-                buttonClass: "btn btn-primary disabled",
+                buttonClass: "btn button-active disabled",
             }
         }
         this.setState(stateObj);

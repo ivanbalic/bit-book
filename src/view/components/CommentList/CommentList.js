@@ -33,11 +33,11 @@ class CommentList extends Component {
 
         if (!comments) {
             return (
-                <div class="sk-folding-cube">
-                    <div class="sk-cube1 sk-cube"></div>
-                    <div class="sk-cube2 sk-cube"></div>
-                    <div class="sk-cube4 sk-cube"></div>
-                    <div class="sk-cube3 sk-cube"></div>
+                <div className="sk-folding-cube">
+                    <div className="sk-cube1 sk-cube"></div>
+                    <div className="sk-cube2 sk-cube"></div>
+                    <div className="sk-cube4 sk-cube"></div>
+                    <div className="sk-cube3 sk-cube"></div>
                 </div>
             );
         }
@@ -45,7 +45,11 @@ class CommentList extends Component {
             return (
                 <>
                     <CommentInput postId={this.props.postId} loadComments={this.loadComments} />
-                    <h1 className='text-center mt-4'>No comments...</h1>
+                    <div className="element-bg radius p-4 mt-4 mx-2">
+                        <h3 className='text-center'>
+                            No comments! Be the first one to commment this post <i className="far fa-grin-wink"></i>
+                        </h3>
+                    </div>
                 </>
             )
         }

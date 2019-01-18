@@ -52,11 +52,11 @@ class FeedPage extends Component {
 
         if (!posts) {
             return (
-                <div class="sk-folding-cube">
-                    <div class="sk-cube1 sk-cube"></div>
-                    <div class="sk-cube2 sk-cube"></div>
-                    <div class="sk-cube4 sk-cube"></div>
-                    <div class="sk-cube3 sk-cube"></div>
+                <div className="sk-folding-cube">
+                    <div className="sk-cube1 sk-cube"></div>
+                    <div className="sk-cube2 sk-cube"></div>
+                    <div className="sk-cube4 sk-cube"></div>
+                    <div className="sk-cube3 sk-cube"></div>
                 </div>
             );
         }
@@ -76,7 +76,7 @@ class FeedPage extends Component {
                     <CreatePost loadPosts={this.loadPosts} />
                 </div>
                 <div className="col-2 mt-4 pr-4 h-25">
-                    <select className='w-100' onChange={this.filterParamChangeHandler}>
+                    <select className='w-100 radius' onChange={this.filterParamChangeHandler}>
                         <option value="all">All posts</option>
                         <option value="text">Text</option>
                         <option value="image">Images</option>

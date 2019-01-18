@@ -43,11 +43,11 @@ class SinglePostPage extends Component {
 
         if (!post) {
             return (
-                <div class="sk-folding-cube">
-                    <div class="sk-cube1 sk-cube"></div>
-                    <div class="sk-cube2 sk-cube"></div>
-                    <div class="sk-cube4 sk-cube"></div>
-                    <div class="sk-cube3 sk-cube"></div>
+                <div className="sk-folding-cube">
+                    <div className="sk-cube1 sk-cube"></div>
+                    <div className="sk-cube2 sk-cube"></div>
+                    <div className="sk-cube4 sk-cube"></div>
+                    <div className="sk-cube3 sk-cube"></div>
                 </div>
             );
         }
@@ -55,7 +55,7 @@ class SinglePostPage extends Component {
         return (
             <div className="col-10 offset-1">
                 {post.userId === parseInt(sessionStorage.getItem("userId")) ? <button className='btn button-active mt-3' onClick={this.deletePostHandler}><i className="fas fa-trash-alt"></i></button> : null}
-                <div className='mt-4 p-4 border element-bg'>
+                <div className='mt-4 p-4 border element-bg radius'>
                     {createFeedContent(post)}
                 </div>
                 <CommentList postId={this.state.postId} />

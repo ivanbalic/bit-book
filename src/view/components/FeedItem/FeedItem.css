@@ -1,18 +1,18 @@
-.feed-link{
+.item-link{
     color:black !important;
-    text-decoration: none !important;
+    text-decoration: none !important; 
 }
 
-.feed-decoration:visited{
+.item-decoration:visited{
     color:black !important;
 }
 
-.feed-decoration:hover{
+.item-decoration:hover{
     box-shadow: 0px 0px 5px 5px rgba(126, 126, 126, 0.5) !important;
     -webkit-box-shadow: 0px 0px 5px 5px rgba(126, 126, 126, 0.5) !important;
     -moz-box-shadow: 0px 0px 5px 5px rgba(126, 126, 126, 0.5) !important;
 }
 
-.feed-decoration:hover small{
+.item-decoration:hover small{
     font-weight: 600;
 }
