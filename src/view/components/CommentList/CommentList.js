@@ -32,13 +32,20 @@ class CommentList extends Component {
         const { comments } = this.state;
 
         if (!comments) {
-            return <h1 className='text-center mt-4'>Loading...</h1>
+            return (
+                <div class="sk-folding-cube">
+                    <div class="sk-cube1 sk-cube"></div>
+                    <div class="sk-cube2 sk-cube"></div>
+                    <div class="sk-cube4 sk-cube"></div>
+                    <div class="sk-cube3 sk-cube"></div>
+                </div>
+            );
         }
         if (!comments.length) {
             return (
                 <>
                     <CommentInput postId={this.props.postId} loadComments={this.loadComments} />
-                    <h1 className='text-center mt-4'>No comments!</h1>
+                    <h1 className='text-center mt-4'>No comments...</h1>
                 </>
             )
         }

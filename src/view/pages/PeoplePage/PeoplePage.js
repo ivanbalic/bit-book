@@ -38,7 +38,14 @@ class PeoplePage extends Component {
     render() {
 
         if (!this.state.users) {
-            return <h1>loading</h1>
+            return (
+                <div class="sk-folding-cube">
+                    <div class="sk-cube1 sk-cube"></div>
+                    <div class="sk-cube2 sk-cube"></div>
+                    <div class="sk-cube4 sk-cube"></div>
+                    <div class="sk-cube3 sk-cube"></div>
+                </div>
+            );
         }
         const filteredUsers = this.state.users.filter(user => {
             return user.name.toLowerCase().includes(this.state.searchInput.toLowerCase());
