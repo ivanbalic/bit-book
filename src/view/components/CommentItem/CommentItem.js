@@ -29,7 +29,7 @@ class CommentItem extends Component {
             return <h3>Loading...</h3>
         }
         return (
-            <li className="media my-4 p-2 border row" >
+            <li className="media my-4 p-2 border row element-bg" >
                 <div className="col-3">
                     <img className="mr-3 w-100 rounded-circle" src={this.state.userImage} alt="Generic placeholder" />
                 </div>
@@ -37,7 +37,6 @@ class CommentItem extends Component {
                     <h5 className="mt-0 mb-1">{this.props.comment.authorName}</h5>
                     {this.props.comment.body}
                 </div>
-
             </li>
         );
     }

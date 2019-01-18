@@ -11,7 +11,7 @@ class TextModal extends Component {
         this.state = {
             inputValue: "",
             error: false,
-            buttonClass: "btn btn-primary disabled"
+            buttonClass: "btn button-active disabled"
         }
     }
 
@@ -36,13 +36,13 @@ class TextModal extends Component {
             stateObj = {
                 inputValue: event.target.value,
                 error: false,
-                buttonClass: "btn btn-primary",
+                buttonClass: "btn button-active",
             }
         } else {
             stateObj = {
                 inputValue: event.target.value,
                 error: true,
-                buttonClass: "btn btn-primary disabled",
+                buttonClass: "btn button-active disabled",
             }
         }
         this.setState(stateObj)

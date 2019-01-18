@@ -9,7 +9,7 @@ class VideoModal extends Component {
         this.state = {
             inputValue: "",
             error: false,
-            buttonClass: "btn btn-primary disabled"
+            buttonClass: "btn button-active disabled"
         }
     }
 
@@ -34,13 +34,13 @@ class VideoModal extends Component {
             stateObj = {
                 inputValue: embedVideo,
                 error: false,
-                buttonClass: "btn btn-primary",
+                buttonClass: "btn button-active",
             }
         } else {
             stateObj = {
                 inputValue: event.target.value,
                 error: true,
-                buttonClass: "btn btn-primary disabled",
+                buttonClass: "btn button-active disabled",
             }
         }
 

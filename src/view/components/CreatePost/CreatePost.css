@@ -17,13 +17,9 @@
 }
 
 .buttonList {
+  margin-right: 3.9em;
   padding: 0.5em 0 !important;
   background: transparent !important;
-}
-
-.buttonList span {
-  margin-left: 1em;
-  font-weight: bolder;
 }
 
 .buttonHeight {

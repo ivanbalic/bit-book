@@ -27,20 +27,17 @@ class CreatePost extends Component {
                 <div className="buttonContainer">
                     <ul className={this.state.active ? "list-group" : "list-group displayNone"}>
                         <li className="list-group-item buttonList border-0">
-                            <button type="button" className="btn btn-primary rounded-circle buttonHeight" data-toggle="modal" data-target="#textModal" />
-                            <span>Post</span>
+                            <button type="button" className="btn creat-post rounded-circle buttonHeight" data-toggle="modal" data-target="#textModal" onClick={this.toggleClass}><i className="fas fa-feather-alt"></i></button>
                         </li>
                         <li className="list-group-item buttonList border-0">
-                            <button type="button" className="btn btn-success rounded-circle buttonHeight" data-toggle="modal" data-target="#imageModal" />
-                            <span>Image</span>
+                            <button type="button" className="btn creat-post rounded-circle buttonHeight" data-toggle="modal" data-target="#imageModal" onClick={this.toggleClass}><i className="fas fa-image"></i></button>
                         </li>
                         <li className="list-group-item buttonList border-0">
-                            <button type="button" className="btn btn-danger rounded-circle buttonHeight" data-toggle="modal" data-target="#videoModal" />
-                            <span>Video</span>
+                            <button type="button" className="btn creat-post rounded-circle buttonHeight" data-toggle="modal" data-target="#videoModal" onClick={this.toggleClass}><i className="fab fa-youtube"></i></button>
                         </li>
                     </ul>
                 </div>
-                <button type="button" className="btn btn-warning rounded-circle singleButton" onClick={this.toggleClass}>+</button>
+                <button type="button" className="btn creat-post rounded-circle singleButton" onClick={this.toggleClass}><i className="fas fa-plus"></i></button>
             </>
         );
     }
