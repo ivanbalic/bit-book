@@ -76,7 +76,7 @@ class FeedPage extends Component {
                     <CreatePost loadPosts={this.loadPosts} />
                 </div>
                 <div className="col-2 mt-4 pr-4 h-25">
-                    <select className='w-100 radius' onChange={this.filterParamChangeHandler}>
+                    <select id="filterSelect" className='w-100 radius' onChange={this.filterParamChangeHandler}>
                         <option value="all">All posts</option>
                         <option value="text">Text</option>
                         <option value="image">Images</option>

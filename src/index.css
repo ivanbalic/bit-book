@@ -8,29 +8,49 @@
 }
 
 .primary-color {
-    background-color: #2B59C3;
+  background-color: #2B59C3;
 }
 
 .shadow-color {
-    background-color: #272838;
+  background-color: #272838;
 }
 
 .icon-color {
-    background-color: #3E8914;
+  background-color: #3E8914;
 }
 
 .radius {
-    border-radius: 10px;
+  border-radius: 10px;
 }
 
 .button-active {
-    background-color: #2B59C3;
-    color: white;
+  background-color: #2B59C3;
+  color: white;
 }
 
 .creat-post {
-    color: white;
-    background-color: #3E8914;
+  color: white;
+  background-color: #3E8914;
+}
+
+/* ------SELECT------ */
+#filterSelect {
+  background-color: #E6EDF2;
+  border: none;
+}
+
+#filterSelect:focus{
+  outline:none;
+}
+
+#filterSelect:hover{
+  cursor: pointer;
+  box-shadow: 0px 0px 5px 5px rgba(126, 126, 126, 0.5);
+}
+
+option:hover {
+  background-color: #3E8914;
+
 }
 
 /* ------BORDERS------ */
