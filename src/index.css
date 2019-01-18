@@ -1,1 +1,28 @@
+.body-bg {
+    background-color: #E6EDF2;
+}
 
+.element-bg {
+    background-color: #A0BED8;
+}
+
+.primary-color {
+    background-color: #2B59C3;
+}
+
+.shadow-color {
+    background-color: #272838;
+}
+
+.icon-color {
+    background-color: #3E8914;
+}
+
+.radius {
+    border-radius: 10px;
+}
+
+.button-active {
+    background-color: #2B59C3;
+    color: white;
+}

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { registerService } from '../../../../services/register-service/register-service';
+import { registerService } from '../../../services/register-service/register-service';
 
 
 
@@ -100,7 +100,7 @@ class Register extends Component {
                     <input type="password" onChange={this.getPasswordValue} className="form-control" id="password" placeholder="Password" />
                 </div>
 
-                <button type="submit" className="btn btn-primary col-12" onClick={this.onRegisterHandler}>Register</button>
+                <button type="submit" className="btn button-active col-12" onClick={this.onRegisterHandler}>Register</button>
                 <small id="emailHelp" className="form-text text-muted">{this.state.registerStatus ? 'Succses! You can login now!' : ''}</small>
             </div>
         )

@@ -9,8 +9,9 @@ import { Header } from './components/Header/Header';
 import { Footer } from './components/Footer/Footer';
 import LoginAndRegister from './pages/LoginAndRegister/LoginAndRegister';
 
-import './App.css';
 import { loginService } from '../services/login-service/login-service';
+
+import './App.css';
 
 const App = () => {
 

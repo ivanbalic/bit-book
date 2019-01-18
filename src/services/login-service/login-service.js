@@ -9,12 +9,12 @@ class LoginService {
     loginFetch = (data) => {
 
         return fetch(LOGIN_ENDPOINT, headers.authHeader(data)
-        )
+        );
     }
 
 
     isLoggedIn() {
-        return sessionStorage.getItem("sessionId")
+        return sessionStorage.getItem("sessionId");
     }
 
 }

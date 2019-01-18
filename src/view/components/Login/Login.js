@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from "react-router-dom";
 
-import { loginService } from '../../../../services/login-service/login-service';
+import { loginService } from '../../../services/login-service/login-service';
 
 
 class Login extends Component {
@@ -76,7 +76,7 @@ class Login extends Component {
                     <input type="password" className="form-control" id="password" placeholder="Password" onChange={this.getPasswordValue} />
                 </div>
 
-                <button type="submit" className="btn btn-primary col-12" onClick={this.onLoginHandler}>Login</button>
+                <button type="submit" className="btn button-active col-12" onClick={this.onLoginHandler}>Login</button>
             </div>
         )
     }
