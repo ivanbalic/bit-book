@@ -47,7 +47,7 @@ class ProfilePage extends Component {
                     <h1 className="display-4 text-center">{this.state.myProfile.name}</h1>
                     {
                         this.state.userId === sessionStorage.getItem('userId') ?
-                            <button className="btn creat-post my-4 w-25 mx-auto" data-toggle="modal" data-target="#editProfile"><i className="fas fa-user-edit"></i></button>
+                            <button className="btn button-active my-4 w-25 mx-auto" data-toggle="modal" data-target="#editProfile"><i className="fas fa-user-edit"></i></button>
                             : null
                     }
                     <p className="text-center border-t pt-4">{this.state.myProfile.description}</p>

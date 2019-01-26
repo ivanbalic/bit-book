@@ -54,9 +54,9 @@ class SinglePostPage extends Component {
 
         return (
             <div className="col-10 offset-1">
-                {post.userId === parseInt(sessionStorage.getItem("userId")) ? <button className='btn button-active mt-3' onClick={this.deletePostHandler}><i className="fas fa-trash-alt"></i></button> : null}
                 <div className='mt-4 p-4 border element-bg radius'>
                     {createFeedContent(post)}
+                    {post.userId === parseInt(sessionStorage.getItem("userId")) ? <button className='btn button-delete mt-3' onClick={this.deletePostHandler}><i className="fas fa-trash-alt"></i></button> : null}
                 </div>
                 <CommentList postId={this.state.postId} />
             </div>
