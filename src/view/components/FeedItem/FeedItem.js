@@ -17,7 +17,7 @@ const FeedItem = ({ post }) => {
                 <div className="card-body">
                     <p className="card-text">
                         <small className="text-muted">{post.getCapitalType()} post</small>
-                        <small className="text-muted float-right">{commentsNum} <i class="fas fa-comments"></i></small>
+                        <small className="text-muted float-right">{commentsNum} <i className="fas fa-comments"></i></small>
                     </p>
                 </div>
             </div>
