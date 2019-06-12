@@ -1,3 +1,3 @@
-const BASE_ENDPOINT = 'http://bitbookapi.azurewebsites.net/api';
+const BASE_ENDPOINT = "https://bitbookapi.azurewebsites.net/api";
 
 export { BASE_ENDPOINT };
