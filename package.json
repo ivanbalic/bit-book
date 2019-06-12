@@ -2,6 +2,7 @@
   "name": "bit-book",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://ivanbalic.github.io/bit-book/",
   "dependencies": {
     "bootstrap": "^4.1.3",
     "jquery": "^3.3.1",
