@@ -4,15 +4,15 @@ self.__precacheManifest = [
     "url": "/bit-book/static/js/runtime~main.52932439.js"
   },
   {
-    "revision": "e8c49cb3902b5a13d235",
-    "url": "/bit-book/static/js/main.e8c49cb3.chunk.js"
+    "revision": "ef6e60ecc602dea480f2",
+    "url": "/bit-book/static/js/main.ef6e60ec.chunk.js"
   },
   {
     "revision": "b2db230b85e21bf3833a",
     "url": "/bit-book/static/js/1.b2db230b.chunk.js"
   },
   {
-    "revision": "e8c49cb3902b5a13d235",
+    "revision": "ef6e60ecc602dea480f2",
     "url": "/bit-book/static/css/main.20ae6c0c.chunk.css"
   },
   {
@@ -20,7 +20,7 @@ self.__precacheManifest = [
     "url": "/bit-book/static/css/1.7062a5ab.chunk.css"
   },
   {
-    "revision": "eca172f65ade70837c45e81a97144913",
+    "revision": "4d2d7fc81f8b840e9b57bb978e750e15",
     "url": "/bit-book/index.html"
   }
 ];
