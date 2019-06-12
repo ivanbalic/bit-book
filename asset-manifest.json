@@ -1,15 +1,15 @@
 {
-  "main.css": "/static/css/main.20ae6c0c.chunk.css",
-  "main.js": "/static/js/main.891a4d16.chunk.js",
-  "main.js.map": "/static/js/main.891a4d16.chunk.js.map",
-  "static/css/1.7062a5ab.chunk.css": "/static/css/1.7062a5ab.chunk.css",
-  "static/js/1.b2db230b.chunk.js": "/static/js/1.b2db230b.chunk.js",
-  "static/js/1.b2db230b.chunk.js.map": "/static/js/1.b2db230b.chunk.js.map",
-  "runtime~main.js": "/static/js/runtime~main.229c360f.js",
-  "runtime~main.js.map": "/static/js/runtime~main.229c360f.js.map",
-  "static/css/main.20ae6c0c.chunk.css.map": "/static/css/main.20ae6c0c.chunk.css.map",
-  "static/css/1.7062a5ab.chunk.css.map": "/static/css/1.7062a5ab.chunk.css.map",
-  "index.html": "/index.html",
-  "precache-manifest.847f1e10325d4f05a274ee133905dd33.js": "/precache-manifest.847f1e10325d4f05a274ee133905dd33.js",
-  "service-worker.js": "/service-worker.js"
+  "main.css": "/bit-book/static/css/main.20ae6c0c.chunk.css",
+  "main.js": "/bit-book/static/js/main.891a4d16.chunk.js",
+  "main.js.map": "/bit-book/static/js/main.891a4d16.chunk.js.map",
+  "static/css/1.7062a5ab.chunk.css": "/bit-book/static/css/1.7062a5ab.chunk.css",
+  "static/js/1.b2db230b.chunk.js": "/bit-book/static/js/1.b2db230b.chunk.js",
+  "static/js/1.b2db230b.chunk.js.map": "/bit-book/static/js/1.b2db230b.chunk.js.map",
+  "runtime~main.js": "/bit-book/static/js/runtime~main.52932439.js",
+  "runtime~main.js.map": "/bit-book/static/js/runtime~main.52932439.js.map",
+  "static/css/1.7062a5ab.chunk.css.map": "/bit-book/static/css/1.7062a5ab.chunk.css.map",
+  "static/css/main.20ae6c0c.chunk.css.map": "/bit-book/static/css/main.20ae6c0c.chunk.css.map",
+  "index.html": "/bit-book/index.html",
+  "precache-manifest.7447c3a4c0379f639eb03eba2f7dcec7.js": "/bit-book/precache-manifest.7447c3a4c0379f639eb03eba2f7dcec7.js",
+  "service-worker.js": "/bit-book/service-worker.js"
 }
