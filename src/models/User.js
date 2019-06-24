@@ -1,38 +1,58 @@
-
 class User {
-    constructor(image = 'https://via.placeholder.com/150', name, description, postNumber, commentNumber, lastPostDate, id, email) {
-        this.image = image;
-        this.name = name;
-        this.description = description;
-        this.postNumber = postNumber;
-        this.commentNumber = commentNumber;
-        this.lastPostDate = lastPostDate;
-        this.id = id;
-        this.email = email;
+  constructor(
+    id,
+    name,
+    email,
+    postNumber,
+    description,
+    lastPostDate,
+    commentNumber,
+    image = "http://sg-fs.com/wp-content/uploads/2017/08/user-placeholder.png"
+  ) {
+    this.id = id;
+    this.name = name;
+    this.image = image;
+    this.email = email;
+    this.postNumber = postNumber;
+    this.description = description;
+    this.lastPostDate = lastPostDate;
+    this.commentNumber = commentNumber;
+  }
+  getFormatedTime() {
+    return this.lastPostDate.toLocaleTimeString("en-GB", { hour12: false });
+  }
+  getFormatedDate() {
+    const dateAndTime = `${this.lastPostDate.toLocaleString("en-GB", {
+      year: "numeric",
+      month: "short",
+      day: "numeric"
+    })}, ${this.lastPostDate.toLocaleTimeString("en-GB", { hour12: false })}`;
+    return this.lastPostDate.getFullYear() !== 1970 ? dateAndTime : "No posts";
+  }
+  getElapsedTime() {
+    const seconds = Math.floor((new Date() - this.lastPostDate) / 1000);
+
+    let interval = Math.floor(seconds / 31536000);
+    if (interval >= 1) {
+      return interval > 1 ? interval + " years" : interval + " year";
     }
-//TODO
-    getPostTime() {
-        let result;
-
-        let year = this.lastPostDate.getFullYear();
-        let day = this.lastPostDate.getDate();
-        let month = this.lastPostDate.getMonth();
-
-        let currentYear = new Date().getFullYear();
-        let currentDay = new Date().getDate();
-        let currentMonth = new Date().getMonth();
-
-
-        if (year !== 1970) {
-            if (currentYear === year && currentDay === day && currentMonth === month) {
-                result = this.lastPostDate.toLocaleTimeString().split("/").join(".");
-            } else {
-                result = this.lastPostDate.toLocaleString().split("/").join(".");
-            }
-        } else {
-            result = false;
-        }
-        return result;
+    interval = Math.floor(seconds / 2592000);
+    if (interval >= 1) {
+      return interval > 1 ? interval + " months" : interval + " month";
     }
+    interval = Math.floor(seconds / 86400);
+    if (interval >= 1) {
+      return interval > 1 ? interval + " days" : interval + " day";
+    }
+    interval = Math.floor(seconds / 3600);
+    if (interval >= 1) {
+      return interval > 1 ? interval + " hours" : interval + " hour";
+    }
+    interval = Math.floor(seconds / 60);
+    if (interval >= 1) {
+      return interval > 1 ? interval + " minuts" : interval + " minut";
+    }
+    return seconds > 1 ? seconds + " seconds" : seconds + " second";
+  }
 }
-export default User;
+export { User };

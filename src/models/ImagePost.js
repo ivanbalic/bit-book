@@ -1,8 +1,18 @@
-import Post from "./Post";
+import { Post } from "./Post";
 
-export default class ImagePost extends Post {
-    constructor(post) {
-        super(post)
-        this.imageUrl = post.imageUrl;
-    }
-};
+class ImagePost extends Post {
+  constructor(
+    id,
+    type,
+    userId,
+    imageUrl,
+    commentsNum,
+    dateCreated,
+    userDisplayName
+  ) {
+    super(id, type, userId, commentsNum, dateCreated, userDisplayName);
+    this.imageUrl = imageUrl;
+  }
+}
+
+export { ImagePost };

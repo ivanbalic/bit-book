@@ -1,11 +1,47 @@
 class Comment {
-    constructor(id, body, postId, authorName, authorId) {
-        this.id = id;
-        this.body = body;
-        this.postId = postId;
-        this.authorName = authorName;
-        this.authorId = authorId;
-    }
-};
+  constructor(id, body, postId, authorId, authorName, dateCreated) {
+    this.id = id;
+    this.body = body;
+    this.postId = postId;
+    this.authorId = authorId;
+    this.authorName = authorName;
+    this.dateCreated = dateCreated;
+  }
+  getFormatedTime() {
+    return this.dateCreated.toLocaleTimeString("en-GB", { hour12: false });
+  }
+  getFormatedDate() {
+    return this.dateCreated.toLocaleDateString("en-GB", {
+      year: "numeric",
+      month: "short",
+      day: "numeric"
+    });
+  }
+  getElapsedTime() {
+    const seconds = Math.floor((new Date() - this.dateCreated) / 1000);
 
-export default Comment;
+    let interval = Math.floor(seconds / 31536000);
+    if (interval >= 1) {
+      return interval > 1 ? interval + " years" : interval + " year";
+    }
+    interval = Math.floor(seconds / 2592000);
+    if (interval >= 1) {
+      return interval > 1 ? interval + " months" : interval + " month";
+    }
+    interval = Math.floor(seconds / 86400);
+    if (interval >= 1) {
+      return interval > 1 ? interval + " days" : interval + " day";
+    }
+    interval = Math.floor(seconds / 3600);
+    if (interval >= 1) {
+      return interval > 1 ? interval + " hours" : interval + " hour";
+    }
+    interval = Math.floor(seconds / 60);
+    if (interval >= 1) {
+      return interval > 1 ? interval + " minuts" : interval + " minut";
+    }
+    return seconds > 1 ? seconds + " seconds" : seconds + " second";
+  }
+}
+
+export { Comment };

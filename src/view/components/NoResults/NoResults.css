@@ -1,0 +1,11 @@
+.result-message {
+  width: 50%;
+  color: gray;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 2em;
+}
+
+.border-thick {
+  border: 5px solid #3b8beb;
+}

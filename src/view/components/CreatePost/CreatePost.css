@@ -1,31 +1,11 @@
-.buttonContainer {
-  position: fixed;
-  bottom: 7em;
-  right: 2em;
+.active-type {
+  background-color: white;
+  border: 1px solid rgb(212, 212, 212);
+  border-top: 1px solid white;
+  position: relative;
+  bottom: 1px;
 }
 
-.displayNone {
-  display: none !important;
+.form-control:focus {
+  outline: none !important;
 }
-.singleButton {
-  position: fixed;
-  bottom: 3em;
-  width: 3.1em;
-  height: 3.1em;
-  right: 5.8em;
-  color: white !important;
-}
-
-.buttonList {
-  margin-right: 3.9em;
-  padding: 0.5em 0 !important;
-  background: transparent !important;
-}
-
-.buttonHeight {
-  margin-top: 0.2em;
-  width: 3.1em;
-  height: 3.1em;
-}
-
-

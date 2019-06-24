@@ -1,3 +1,17 @@
 const BASE_ENDPOINT = "https://bitbookapi.azurewebsites.net/api";
+const USERS_ENDPOINT = `${BASE_ENDPOINT}/users`;
+const LOGIN_ENDPOINT = `${BASE_ENDPOINT}/login`;
+const POSTS_ENDPOINT = `${BASE_ENDPOINT}/posts`;
+const PROFILE_ENDPOINT = `${BASE_ENDPOINT}/profile`;
+const COMMENTS_ENPOINT = `${BASE_ENDPOINT}/comments`;
+const REGISTER_ENDPOINT = `${BASE_ENDPOINT}/register`;
 
-export { BASE_ENDPOINT };
+export {
+  BASE_ENDPOINT,
+  LOGIN_ENDPOINT,
+  USERS_ENDPOINT,
+  POSTS_ENDPOINT,
+  PROFILE_ENDPOINT,
+  COMMENTS_ENPOINT,
+  REGISTER_ENDPOINT
+};

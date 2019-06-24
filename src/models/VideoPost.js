@@ -1,8 +1,18 @@
-import Post from "./Post";
+import { Post } from "./Post";
 
-export default class VideoPost extends Post {
-    constructor(post) {
-        super(post)
-        this.videoUrl = post.videoUrl;
-    }
-};
+class VideoPost extends Post {
+  constructor(
+    id,
+    type,
+    userId,
+    videoUrl,
+    commentsNum,
+    dateCreated,
+    userDisplayName
+  ) {
+    super(id, type, userId, commentsNum, dateCreated, userDisplayName);
+    this.videoUrl = videoUrl;
+  }
+}
+
+export { VideoPost };

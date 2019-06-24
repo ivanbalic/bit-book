@@ -1,0 +1,35 @@
+.carousel-item {
+  height: fit-content;
+  max-height: 100vh;
+  background-color: black;
+}
+
+.carousel-link {
+  text-align: center;
+  position: absolute;
+  top: 30px;
+  width: 100%;
+  z-index: 1000;
+  color: rgba(245, 244, 244, 0.9);
+  display: none;
+}
+
+.carousel-link:hover {
+  text-decoration: none;
+  color: rgba(245, 244, 244, 0.9);
+}
+
+.carousel-link span:hover {
+  color: #3b8beb;
+  text-decoration: none;
+}
+
+.carousel-link i {
+  font-size: 2em;
+}
+
+@media (min-width: 545px) {
+  .carousel-link {
+    display: block;
+  }
+}
