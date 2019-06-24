@@ -85,7 +85,7 @@ class CreatePost extends Component {
       postCommunicator
         .addPost(this.createPayload(whoIsActive, postContent), whoIsActive)
         .then(message => {
-          this.props.loadPosts();
+          this.props.reload();
           this.setState({
             message,
             postContent: "",

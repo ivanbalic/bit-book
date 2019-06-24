@@ -68,7 +68,7 @@ class SinglePostPage extends Component {
           <div className="col-lg-11">
             {post ? (
               <Fragment>
-                <div className="bg-light rounded">
+                <div className="bg-light rounded shadow">
                   {post.userId ===
                   parseInt(sessionStorage.getItem("userId")) ? (
                     <DeleteButton handleDelete={this.handleDelete} />

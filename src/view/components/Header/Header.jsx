@@ -86,6 +86,11 @@ class Header extends Component {
                 </Link>
               </li>
               <li className="nav-item">
+                <Link className="nav-link py-0" to={`/about`}>
+                  <i className="fas fa-info" /> About
+                </Link>
+              </li>
+              <li className="nav-item">
                 <Link
                   className="nav-link py-0"
                   to={`/`}

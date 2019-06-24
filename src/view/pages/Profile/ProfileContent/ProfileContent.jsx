@@ -11,7 +11,7 @@ const ProfileContent = ({ profile }) => {
     commentNumber
   } = profile;
   return (
-    <div className="profile bg-light rounded">
+    <div className="profile bg-light rounded mb-4">
       <img
         className="profile-img bg-white border rounded shadow"
         src={image}

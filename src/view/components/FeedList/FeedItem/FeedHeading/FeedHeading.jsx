@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 
-import { userCommunicator } from "../../../../../../communicators/UserCommunicator/UserCommunicator";
+import { userCommunicator } from "../../../../../communicators/UserCommunicator/UserCommunicator";
 
 import "./FeedHeading.css";
 

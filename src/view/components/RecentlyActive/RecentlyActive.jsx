@@ -22,9 +22,9 @@ class RecentlyActive extends Component {
 
   render() {
     const { users } = this.state;
-    const { withLink } = this.props;
+    const { withLink, className } = this.props;
     return (
-      <div className="card my-4 shadow sticky-first">
+      <div className={`card my-4 border-0 shadow ${className}`}>
         <h5 className="card-header button-active">Recently Active</h5>
         <div className="card-body bg-light">
           {users ? (

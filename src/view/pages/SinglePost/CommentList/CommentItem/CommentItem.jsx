@@ -37,7 +37,7 @@ class CommentItem extends Component {
     const { userImg, comment } = this.state;
     const { body, authorName } = comment;
     return (
-      <div className="bg-light pt-1 radius">
+      <div className="bg-light pt-1 radius shadow">
         <div className="media mx-4 mt-4 mb-1">
           <img
             src={userImg}
@@ -58,9 +58,6 @@ class CommentItem extends Component {
         <small className="text-muted ml-4">
           {comment.getElapsedTime()} ago
         </small>
-        <h5 className="text-primary float-right mr-3">
-          <i className="far fa-thumbs-up" />
-        </h5>
         <hr />
       </div>
     );

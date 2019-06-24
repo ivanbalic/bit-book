@@ -2,6 +2,7 @@ class Comment {
   constructor(id, body, postId, authorId, authorName, dateCreated) {
     this.id = id;
     this.body = body;
+    this.like = false;
     this.postId = postId;
     this.authorId = authorId;
     this.authorName = authorName;
@@ -41,6 +42,9 @@ class Comment {
       return interval > 1 ? interval + " minuts" : interval + " minut";
     }
     return seconds > 1 ? seconds + " seconds" : seconds + " second";
+  }
+  changeLike() {
+    this.like = !this.like;
   }
 }
 

@@ -1,8 +1,8 @@
 import React from "react";
 
-const PostFilter = ({ handleChange }) => {
+const PostFilter = ({ handleChange, className }) => {
   return (
-    <div className="card my-4 border-0 shadow sticky-second">
+    <div className={`card my-4 border-0 shadow ${className}`}>
       <h5 className="card-header button-active">Filter posts</h5>
       <div className="card-body bg-light">
         <div className="row">

@@ -2,6 +2,7 @@ class Post {
   constructor(id, type, userId, commentsNum, userDisplayName, dateCreated) {
     this.id = id;
     this.type = type;
+    this.like = false;
     this.userId = userId;
     this.commentsNum = commentsNum;
     this.dateCreated = dateCreated;
@@ -53,6 +54,9 @@ class Post {
       return interval > 1 ? interval + " minuts" : interval + " minut";
     }
     return seconds > 1 ? seconds + " seconds" : seconds + " second";
+  }
+  changeLike() {
+    this.like = !this.like;
   }
 }
 

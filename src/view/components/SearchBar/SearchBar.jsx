@@ -9,9 +9,9 @@ class SearchBar extends Component {
   }
   render() {
     const { search } = this.state;
-    const { title, handleSearch } = this.props;
+    const { title, handleSearch, className } = this.props;
     return (
-      <div className="card my-4 border-0 shadow sticky-first">
+      <div className={`card my-4 border-0 shadow ${className}`}>
         <h5 className="card-header button-active">{title}</h5>
         <div className="card-body bg-light">
           <div className="input-group">

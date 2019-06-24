@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 
-import { FeedList } from "./FeedList/FeedList";
-import { PostFilter } from "./PostFilter/PostFilter";
 import { Loader } from "../../components/Loader/Loader";
+import { FeedList } from "../../components/FeedList/FeedList";
 import { SearchBar } from "../../components/SearchBar/SearchBar";
 import { NoResults } from "../../components/NoResults/NoResults";
 import { CreatePost } from "../../components/CreatePost/CreatePost";
+import { PostFilter } from "../../components/PostFilter/PostFilter";
 import { MostCommented } from "../../components/MostCommented/MostCommented";
 import { userCommunicator } from "../../../communicators/UserCommunicator/UserCommunicator";
 import { postCommunicator } from "../../../communicators/PostCommunicator/PostCommunicator";
@@ -83,21 +83,23 @@ class FeedPage extends Component {
           <div className="col-md-4">
             <SearchBar
               title={"Search posts"}
+              className="sticky-first"
               handleSearch={this.handleSearch}
             />
             <PostFilter
+              className="sticky-second"
               handleChange={({ target }) =>
                 this.setState({ filterParam: target.value })
               }
             />
-            <MostCommented posts={posts} />
+            <MostCommented posts={posts} className="sticky-third" />
           </div>
           <div className="col-md-8">
             {profile ? (
               <CreatePost
-                loadPosts={this.loadPosts}
                 name={profile.name}
                 image={profile.image}
+                reload={this.loadPosts}
               />
             ) : null}
             {searchResults ? (
