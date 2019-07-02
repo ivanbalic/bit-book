@@ -11,8 +11,9 @@ Bit Book is a simple social network where user can:
     -   Edit own profile
 
 Note: If you dont want to waste time registrating you can use this account:
--Username: guest
--Password: welcome
+
+    -   Username: guest
+    -   Password: welcome
 
 Live Preview: [BitBook](https://ivanbalic.github.io/bit-book/)
 
