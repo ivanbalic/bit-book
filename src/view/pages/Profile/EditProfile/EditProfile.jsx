@@ -16,7 +16,9 @@ class EditProfile extends Component {
       errorName: "",
       avatarUrl: "",
       errorEmail: "",
+      updateClass: "",
       description: "",
+      updateMessage: "",
       errorDescription: ""
     };
     this.handleModalClose = this.handleModalClose.bind(this);
@@ -45,11 +47,21 @@ class EditProfile extends Component {
         avatarUrl: avatarUrl
       };
 
-      userCommunicator.editProfile(payload).then(response => {
-        if (response.status >= 200 && response.status < 300) {
+      userCommunicator
+        .editProfile(payload)
+        .then(message => {
           this.props.loadProfile(id);
-        }
-      });
+          this.setState({
+            updateMessage: message,
+            updateClass: "text-success"
+          });
+        })
+        .catch(({ message }) => {
+          this.setState({
+            updateMessage: message,
+            updateClass: "text-danger"
+          });
+        });
     }
   }
 
@@ -63,6 +75,8 @@ class EditProfile extends Component {
       errorName: "",
       errorEmail: "",
       avatarUrl: image,
+      updateClass: "",
+      updateMessage: "",
       errorDescription: ""
     });
   }
@@ -122,6 +136,8 @@ class EditProfile extends Component {
       errorName,
       errorEmail,
       description,
+      updateClass,
+      updateMessage,
       errorDescription
     } = this.state;
 
@@ -223,7 +239,7 @@ class EditProfile extends Component {
                           this.setState({ description: target.value });
                         }}
                       />
-                      <label htmlFor="username">Description</label>
+                      <label htmlFor="description">Description</label>
                       <small className="text-danger">{errorDescription}</small>
                     </div>
                   </div>
@@ -231,11 +247,12 @@ class EditProfile extends Component {
               </div>
             </div>
             <div className="modal-footer border-0 p-2">
+              <small className={updateClass}>{updateMessage}</small>
               <button
                 type="button"
                 className="btn btn-danger"
                 data-dismiss="modal"
-                onClick={this.closeEditProfileHandler}
+                onClick={this.handleModalClose}
               >
                 CLOSE
               </button>

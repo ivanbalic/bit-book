@@ -38,9 +38,14 @@ class CommentInput extends Component {
       postId: this.state.postId
     };
 
-    commentCommunicator.addComment(payload).then(response => {
-      this.props.loadComments();
-    });
+    commentCommunicator
+      .addComment(payload)
+      .then(() => {
+        this.props.loadComments();
+      })
+      .catch(({ message }) => {
+        alert(message);
+      });
 
     this.setState({
       inputValue: ""

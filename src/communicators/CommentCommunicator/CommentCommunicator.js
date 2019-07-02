@@ -1,5 +1,5 @@
 import { Comment } from "../../models/Comment";
-import { COMMENTS_ENPOINT } from "../../shared/constants";
+import { COMMENTS_ENPOINT } from "../../shared/endpoints";
 import { httpService } from "../../services/HttpService/HttpService";
 
 class CommentCommunicator {
@@ -28,7 +28,11 @@ class CommentCommunicator {
   }
 
   addComment(data) {
-    return httpService.post(COMMENTS_ENPOINT, data);
+    return httpService.post(COMMENTS_ENPOINT, data).then(response => {
+      if (response.hasOwnProperty("message")) {
+        throw new Error("Something went wrong! Please try again later!");
+      }
+    });
   }
 }
 

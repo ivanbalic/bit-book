@@ -1,4 +1,4 @@
-import { LOGIN_ENDPOINT } from "../../shared/constants";
+import { LOGIN_ENDPOINT } from "../../shared/endpoints";
 import { httpService } from "../../services/HttpService/HttpService";
 
 class LoginCommunicator {

@@ -1,4 +1,4 @@
-import { REGISTER_ENDPOINT } from "../../shared/constants";
+import { REGISTER_ENDPOINT } from "../../shared/endpoints";
 import { httpService } from "../../services/HttpService/HttpService";
 
 class RegisterCommunicator {

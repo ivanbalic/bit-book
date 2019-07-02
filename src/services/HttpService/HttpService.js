@@ -12,23 +12,13 @@ class HttpService {
   }
 
   post(url, payload) {
-    return fetch(url, postRequestHeader(payload)).then(response => {
-      const { status } = response;
-      if (status >= 200 && status < 300) {
-        return "Success!";
-      }
-      throw new Error("Faild!");
-    });
+    return fetch(url, postRequestHeader(payload)).then(response =>
+      response.json()
+    );
   }
 
   put(url, payload) {
-    return fetch(url, putRequestHeader(payload)).then(response => {
-      const { status, statusText } = response;
-      if (status >= 200 && status < 300) {
-        return response;
-      }
-      return Promise.reject(`${status} ${statusText}`);
-    });
+    return fetch(url, putRequestHeader(payload)).then(response => response);
   }
 
   delete(url) {

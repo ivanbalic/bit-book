@@ -3,7 +3,7 @@ import { VideoPost } from "../../models/VideoPost";
 import { ImagePost } from "../../models/ImagePost";
 import { createPostQueryParam } from "../../shared/helpers";
 import { httpService } from "../../services/HttpService/HttpService";
-import { BASE_ENDPOINT, POSTS_ENDPOINT } from "../../shared/constants";
+import { BASE_ENDPOINT, POSTS_ENDPOINT } from "../../shared/endpoints";
 
 class PostCommunicator {
   getPosts() {
@@ -130,7 +130,12 @@ class PostCommunicator {
 
   addPost(data, queryParam) {
     const POSTS_ENDPOINT = `${BASE_ENDPOINT}/${queryParam}`;
-    return httpService.post(POSTS_ENDPOINT, data);
+    return httpService.post(POSTS_ENDPOINT, data).then(response => {
+      if (response === true) {
+        return "Success!";
+      }
+      throw new Error("Faild!");
+    });
   }
 
   deletePost(postId) {
@@ -141,7 +146,7 @@ class PostCommunicator {
           "Something went wrong. Post can't be delted right now, please try again later."
         );
       }
-      console.info(`Post wit id ${response.id}, deleted`);
+      console.info(`Post with id ${response.id}, deleted`);
       return "Post successfully deleted.";
     });
   }

@@ -1,6 +1,6 @@
 import { User } from "../../models/User";
 import { httpService } from "../../services/HttpService/HttpService";
-import { PROFILE_ENDPOINT, USERS_ENDPOINT } from "../../shared/constants";
+import { PROFILE_ENDPOINT, USERS_ENDPOINT } from "../../shared/endpoints";
 
 class UserCommunicator {
   getProfile() {
@@ -86,7 +86,12 @@ class UserCommunicator {
   }
 
   editProfile(data) {
-    return httpService.put(`${PROFILE_ENDPOINT}s`, data);
+    return httpService.put(`${PROFILE_ENDPOINT}s`, data).then(({ status }) => {
+      if (status >= 200 && status < 300) {
+        return "Success!";
+      }
+      throw new Error("Faild!");
+    });
   }
 }
 
