@@ -23,23 +23,18 @@ const AboutPage = () => {
           <div class="row">
             <div class="col-lg-8 mx-auto">
               <h2>About</h2>
-
-              <p className="lead">BitBook is a Simple Social Media Network.</p>
-              <p className="lead">Users can register/login.</p>
               <p className="lead">
-                The central page is feed, which shows posts by all users. Posts
-                can be filtered by type (text, image, video). Users are allowed
-                to create, delete and make a comment on posts. There is search
-                function which allows users to find a another user. Profile has
-                edit function, users can upload image from their PC.
+                Bit Book is a simple social network where user can:
               </p>
-              <p className="lead">
-                User have possibility to refresh users by clicking refresh
-                button in header. App also keeps track of the time when laste
-                user refresh is done and displays that info in the footer, as
-                well as gender statistics wichi are displayed under the search
-                bar.
-              </p>
+              <ul>
+                <li>Register/Login</li>
+                <li>See latest posts from all users</li>
+                <li>Create text, image or video posts</li>
+                <li>Comment posts</li>
+                <li>Search for users</li>
+                <li>View users profile</li>
+                <li>Edit own profile</li>
+              </ul>
               <p className="lead">
                 Source code on{" "}
                 <a href="https://github.com/ivanbalic/bit-book" target="blank">

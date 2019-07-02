@@ -1,15 +1,18 @@
 # BitBook
 
-BitBook is a Simple Social Media Network.
+Bit Book is a simple social network where user can:
 
-Users can register/login.
+    -   Register/Login
+    -   See latest posts from all users
+    -   Create text, image or video posts
+    -   Comment posts
+    -   Search for users
+    -   View users profile
+    -   Edit own profile
 
 Note: If you dont want to waste time registrating you can use this account:
 -Username: guest
 -Password: welcome
-
-The central page is feed, which shows posts by all users. Posts can be filtered by type (text, image, video). Users are allowed to create, delete and make a comment on posts. There is search function which allows users to find a another user.
-Profile has edit function, users can upload image from their PC.
 
 Live Preview: [BitBook](https://ivanbalic.github.io/bit-book/)
 
