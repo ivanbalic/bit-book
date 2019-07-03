@@ -170,9 +170,6 @@ class EditProfile extends Component {
                       }
                       alt="preview"
                     />
-                    <button type="button" className="btn button-active my-2">
-                      UPLOAD PHOTO
-                    </button>
                   </div>
                   <div className="col-md-8 col-sm-12 mt-4">
                     <div className="form-label-group">
