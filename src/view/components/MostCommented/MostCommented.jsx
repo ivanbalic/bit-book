@@ -11,7 +11,7 @@ const MostCommented = ({ posts, className }) => {
       <div className="card-body bg-light">
         {posts ? (
           <Fragment>
-            {getMostCommented([...posts]).map((post, i) => (
+            {getMostCommented(posts).map((post, i) => (
               <PostItem post={post} key={i} />
             ))}
           </Fragment>

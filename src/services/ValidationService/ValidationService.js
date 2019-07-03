@@ -1,13 +1,8 @@
 class ValidationService {
   isTextValid(text) {
-    if (
-      !text.includes("http") &&
-      !text.includes("<") &&
-      !text.includes("www")
-    ) {
-      return true;
-    }
-    return false;
+    return (
+      !text.includes("http") && !text.includes("<") && !text.includes("www")
+    );
   }
 
   isImageUrlValid(url) {
@@ -26,38 +21,25 @@ class ValidationService {
         imageFormat = false;
     }
 
-    if (
-      (url.startsWith("https://") || url.startsWith("http://")) &&
-      imageFormat
-    ) {
-      return true;
-    }
-    return false;
+    return (
+      (url.startsWith("https://") || url.startsWith("http://")) && imageFormat
+    );
   }
 
   isVideoUrlValid(url) {
-    if (
+    return (
       (url.startsWith("https://www.youtube.com") ||
         url.startsWith("http://www.youtube.com")) &&
       (url.includes("watch?v=") || url.includes("embed"))
-    ) {
-      return true;
-    }
-    return false;
+    );
   }
 
   isNameValid(name) {
-    if (name.length > 2 && name.length < 31) {
-      return true;
-    }
-    return false;
+    return name.length > 2 && name.length < 31;
   }
 
   isEmailValid(email) {
-    if (email.includes("@") && email.includes(".com")) {
-      return true;
-    }
-    return false;
+    return email.includes("@") && email.includes(".com");
   }
 }
 

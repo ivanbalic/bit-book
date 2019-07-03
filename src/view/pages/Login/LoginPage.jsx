@@ -27,13 +27,10 @@ class LoginPage extends Component {
     this.setState({ isLoading: true });
     loginCommunicator
       .login(payload)
-      .then(sessionId => {
-        sessionStorage.setItem("sessionId", sessionId);
+      .then(() => {
         window.location.reload();
       })
-      .catch(({ message }) =>
-        this.setState({ message: message, isLoading: false })
-      );
+      .catch(({ message }) => this.setState({ message, isLoading: false }));
   }
 
   handleRegistration(email, username, password, name) {

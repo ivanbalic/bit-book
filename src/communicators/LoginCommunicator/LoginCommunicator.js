@@ -7,7 +7,7 @@ class LoginCommunicator {
       if (response.hasOwnProperty("error")) {
         throw new Error(response.error.message);
       }
-      return response.sessionId;
+      sessionStorage.setItem("sessionId", response.sessionId);
     });
   }
 }

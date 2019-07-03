@@ -27,17 +27,12 @@ const getRecentlyActive = users => {
 };
 
 const getMostCommented = posts => {
-  return posts
+  const postsList = [...posts];
+  return postsList
     .sort((a, b) => {
       const firstPost = a.commentsNum;
       const secondPost = b.commentsNum;
-      if (firstPost < secondPost) {
-        return 1;
-      }
-      if (firstPost > secondPost) {
-        return -1;
-      }
-      return 0;
+      return secondPost - firstPost;
     })
     .slice(0, 5);
 };
