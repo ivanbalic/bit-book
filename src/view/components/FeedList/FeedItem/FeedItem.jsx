@@ -10,7 +10,6 @@ import "./FeedItem.css";
 
 const FeedItem = ({ post, history }) => {
   const { id, type, text, userId, imageUrl, videoUrl, commentsNum } = post;
-
   function handleUserClick(event) {
     event.stopPropagation();
     history.push({
@@ -20,7 +19,6 @@ const FeedItem = ({ post, history }) => {
       }
     });
   }
-
   function handelPostClick() {
     history.push({
       pathname: "/post-details",
@@ -31,7 +29,6 @@ const FeedItem = ({ post, history }) => {
       }
     });
   }
-
   return (
     <div
       className="card mb-4 item-decoration border-0 shadow"

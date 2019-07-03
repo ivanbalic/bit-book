@@ -30,8 +30,8 @@ class PostCommunicator {
             dateCreated,
             userDisplayName
           }) => {
-            const day1 = new Date(dateCreated);
-            const timeInMillis = day1.getTime() + 7200000;
+            const date = new Date(dateCreated);
+            const timeFix = date.getTime() + 7200000;
             switch (type) {
               case "image":
                 return new ImagePost(
@@ -41,7 +41,7 @@ class PostCommunicator {
                   imageUrl,
                   commentsNum,
                   userDisplayName,
-                  new Date(timeInMillis)
+                  new Date(timeFix)
                 );
               case "video":
                 return new VideoPost(
@@ -51,7 +51,7 @@ class PostCommunicator {
                   videoUrl,
                   commentsNum,
                   userDisplayName,
-                  new Date(timeInMillis)
+                  new Date(timeFix)
                 );
               case "text":
                 return new TextPost(
@@ -61,7 +61,7 @@ class PostCommunicator {
                   userId,
                   commentsNum,
                   userDisplayName,
-                  new Date(timeInMillis)
+                  new Date(timeFix)
                 );
               default:
                 return null;
@@ -89,8 +89,8 @@ class PostCommunicator {
         dateCreated,
         userDisplayName
       } = response;
-      const day1 = new Date(dateCreated);
-      const timeInMillis = day1.getTime() + 7200000;
+      const date = new Date(dateCreated);
+      const timeFix = date.getTime() + 7200000;
       switch (type) {
         case "image":
           return new ImagePost(
@@ -100,7 +100,7 @@ class PostCommunicator {
             imageUrl,
             commentsNum,
             userDisplayName,
-            new Date(timeInMillis)
+            new Date(timeFix)
           );
         case "video":
           return new VideoPost(
@@ -110,7 +110,7 @@ class PostCommunicator {
             videoUrl,
             commentsNum,
             userDisplayName,
-            new Date(timeInMillis)
+            new Date(timeFix)
           );
         case "text":
           return new TextPost(
@@ -120,7 +120,7 @@ class PostCommunicator {
             userId,
             commentsNum,
             userDisplayName,
-            new Date(timeInMillis)
+            new Date(timeFix)
           );
         default:
           return null;

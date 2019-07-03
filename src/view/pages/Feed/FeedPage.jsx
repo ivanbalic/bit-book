@@ -76,7 +76,6 @@ class FeedPage extends Component {
         : searchResults.filter(post => {
             return post.type === filterParam;
           });
-
     return (
       <main className="container">
         <div className="row d-flex flex-row-reverse">
